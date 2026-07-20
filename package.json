@@ -12,6 +12,7 @@
     "postcss": "^8.5.10"
   },
   "dependencies": {
+    "@next/third-parties": "^16.2.10",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "lucide-react": "^1.25.0",
