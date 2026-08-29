@@ -5,7 +5,8 @@ type ConfirmationEmailInput = {
 
 export function buildConfirmationEmail({ name, message }: ConfirmationEmailInput) {
   const firstName = name.trim().split(" ")[0];
-  const escapedMessage = escapeHtml(message).replace(/\n/g, "<br />");
+  const trimmedMessage = message.trim();
+  const escapedMessage = escapeHtml(trimmedMessage).replace(/\n/g, "<br />");
 
   const subject = "Got your message - hasitha.dev";
 
@@ -58,9 +59,7 @@ export function buildConfirmationEmail({ name, message }: ConfirmationEmailInput
                       <span style="display:block; font-family: 'SF Mono', Menlo, Consolas, monospace; font-size:11px; letter-spacing:0.06em; color:#5b6b85; text-transform:uppercase; margin-bottom:8px;">
                         What you sent
                       </span>
-                      <p style="margin:0; font-size:14px; line-height:1.7; color:#d7dee8; white-space:pre-wrap;">
-                        ${escapedMessage}
-                      </p>
+                      <p style="margin:0; font-size:14px; line-height:1.7; color:#d7dee8;">${escapedMessage}</p>
                     </td>
                   </tr>
                 </table>
@@ -77,9 +76,9 @@ export function buildConfirmationEmail({ name, message }: ConfirmationEmailInput
                 </p>
 
                 <div style="text-align: center; margin-top: 20px;">
-                  <span style="font-size: 15px; font-weight: 700;">
+                  <a href="https://hasitha.dev" style="text-decoration: none; font-size: 15px; font-weight: 700;">
                     <span style="color: #C9A24B;">hasitha</span><span style="color: #6B7591;">.dev</span>
-                  </span>
+                  </a>
                   <p style="font-size: 11px; color: #6B7591; margin: 10px 0 0;">&#169; 2026 Hasitha Amarasinghe</p>
                 </div>
               </td>
@@ -103,7 +102,7 @@ export function buildConfirmationEmail({ name, message }: ConfirmationEmailInput
 Your message has been received and I'll respond as soon as possible.
 
 What you sent:
-${message}
+${trimmedMessage}
 
 —
 This is an automated confirmation sent because you contacted me through the form on hasitha.dev.
