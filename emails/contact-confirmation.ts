@@ -17,10 +17,10 @@ export function buildConfirmationEmail({ name, message }: ConfirmationEmailInput
       <tr>
         <td align="center">
           <!--[if mso]>
-          <table role="presentation" width="520" cellpadding="0" cellspacing="0" style="width:520px; background-color:#0f1829; border:1px solid #1d2c47; border-radius: 10px;">
+          <table role="presentation" width="520" cellpadding="0" cellspacing="0" style="width:520px; background-color:#0c1938; border:1px solid #1d2c47; border-radius: 10px;">
           <![endif]-->
           <!--[if !mso]><!-->
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; background-color:#0f1829; background-image: radial-gradient(circle at 0% 0%, rgba(29,78,216,0.35) 0%, rgba(29,78,216,0) 45%), radial-gradient(circle at 100% 100%, rgba(29,78,216,0.35) 0%, rgba(29,78,216,0) 45%); border:1px solid #1d2c47; border-radius: 10px; overflow:hidden;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; background-color:#0c1938; background-image: radial-gradient(circle at 0% 0%, rgba(29,78,216,0.35) 0%, rgba(29,78,216,0) 45%), radial-gradient(circle at 100% 100%, rgba(29,78,216,0.35) 0%, rgba(29,78,216,0) 45%); border:1px solid #1d2c47; border-radius: 10px; overflow:hidden;">
           <!--<![endif]-->
 
             <!-- Accent top bar -->
@@ -69,7 +69,7 @@ export function buildConfirmationEmail({ name, message }: ConfirmationEmailInput
 
             <!-- Footer -->
             <tr>
-              <td style="padding: 24px 32px 28px 32px; border-top:1px solid #1d2c47;">
+              <td style="padding: 24px 32px 28px 32px; border-top:1px solid #1d2c47; background-color:#081026;">
                 <p style="margin:0; font-size: 12px; line-height:1.6; color: #94A3B8; text-align: center;">
                   This is an automated confirmation sent because you contacted me through the form on
                   <a href="http://hasitha.dev/" style="color:#C9A24B; text-decoration:none;">hasitha.dev</a>.
