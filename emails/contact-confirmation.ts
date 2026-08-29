@@ -12,11 +12,21 @@ export function buildConfirmationEmail({ name, message }: ConfirmationEmailInput
   const html = `
 <!DOCTYPE html>
 <html>
-  <body style="margin:0; padding:0; background-color:#0B1220; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#0B1220; padding: 40px 16px;">
+  <body style="margin:0; padding:0; background-color:#FFFFFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FFFFFF; padding: 40px 16px;">
       <tr>
         <td align="center">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; background-color:#0f1829; border:1px solid #1d2c47; border-radius: 10px; overflow:hidden;">
+          <!--[if mso]>
+          <table role="presentation" width="520" cellpadding="0" cellspacing="0" style="width:520px; background-color:#0f1829; border:1px solid #1d2c47; border-radius: 10px;">
+          <![endif]-->
+          <!--[if !mso]><!-->
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; background-color:#0f1829; background-image: radial-gradient(circle at 0% 0%, rgba(29,78,216,0.35) 0%, rgba(29,78,216,0) 45%), radial-gradient(circle at 100% 100%, rgba(29,78,216,0.35) 0%, rgba(29,78,216,0) 45%); border:1px solid #1d2c47; border-radius: 10px; overflow:hidden;">
+          <!--<![endif]-->
+
+            <!-- Accent top bar -->
+            <tr>
+              <td style="height:4px; line-height:4px; font-size:0; background-color:#C9A24B;">&nbsp;</td>
+            </tr>
 
             <!-- Header -->
             <tr>
@@ -29,12 +39,12 @@ export function buildConfirmationEmail({ name, message }: ConfirmationEmailInput
 
             <!-- Body -->
             <tr>
-              <td style="padding: 16px 32px 8px 32px;">
+              <td style="padding: 20px 32px 8px 32px;">
                 <h1 style="margin:0 0 12px 0; font-size: 20px; line-height:1.4; color:#F8FAFC; font-weight:600;">
-                  Thanks, ${escapeHtml(firstName)} — got it.
+                  Thank you for contacting me, ${escapeHtml(firstName)}.
                 </h1>
                 <p style="margin:0 0 20px 0; font-size:14px; line-height:1.6; color:#94A3B8;">
-                  Your message came through. I'll read it and get back to you soon.
+                  Your message has been received and I'll respond as soon as possible.
                 </p>
               </td>
             </tr>
@@ -59,17 +69,28 @@ export function buildConfirmationEmail({ name, message }: ConfirmationEmailInput
 
             <!-- Footer -->
             <tr>
-              <td style="padding: 0 32px 28px 32px; border-top:1px solid #1d2c47;">
-                <p style="margin: 20px 0 0 0; font-size:12px; line-height:1.6; color:#5b6b85;">
-                  This is an automated confirmation sent because you submitted the contact form on hasitha.dev.
-                  For further questions, reach me directly at
-                  <a href="mailto:hello@hasitha.dev" style="color:#C9A24B; text-decoration:none;">hello@hasitha.dev</a>.<br /><br />
-                  Hasitha Amarasinghe · hasitha.dev
+              <td style="padding: 24px 32px 28px 32px; border-top:1px solid #1d2c47;">
+                <p style="margin:0; font-size: 12px; line-height:1.6; color: #94A3B8; text-align: center;">
+                  This is an automated confirmation sent because you contacted me through the form on
+                  <a href="http://hasitha.dev/" style="color:#C9A24B; text-decoration:none;">hasitha.dev</a>.
+                  For anything further, just reply to this email.
                 </p>
+
+                <div style="text-align: center; margin-top: 20px;">
+                  <span style="font-size: 15px; font-weight: 700;">
+                    <span style="color: #C9A24B;">hasitha</span><span style="color: #6B7591;">.dev</span>
+                  </span>
+                  <p style="font-size: 11px; color: #6B7591; margin: 10px 0 0;">&#169; 2026 Hasitha Amarasinghe</p>
+                </div>
               </td>
             </tr>
 
+          <!--[if mso]>
           </table>
+          <![endif]-->
+          <!--[if !mso]><!-->
+          </table>
+          <!--<![endif]-->
         </td>
       </tr>
     </table>
@@ -77,18 +98,19 @@ export function buildConfirmationEmail({ name, message }: ConfirmationEmailInput
 </html>
 `.trim();
 
-  const text = `Thanks, ${firstName} — got it.
+  const text = `Thank you for contacting me, ${firstName}.
 
-Your message came through. I'll read it and get back to you soon.
+Your message has been received and I'll respond as soon as possible.
 
 What you sent:
 ${message}
 
 —
-This is an automated confirmation sent because you submitted the contact form on hasitha.dev.
-For further questions, reach me directly at hello@hasitha.dev.
+This is an automated confirmation sent because you contacted me through the form on hasitha.dev.
+For anything further, just reply to this email.
 
-Hasitha Amarasinghe · hasitha.dev`;
+hasitha.dev
+© 2026 Hasitha Amarasinghe`;
 
   return { subject, html, text };
 }
