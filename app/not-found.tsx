@@ -44,10 +44,9 @@ export default function NotFound() {
             404
           </span>
           <h1 className="text-4xl font-semibold tracking-tight">
-            <span className="text-[#F8FAFC]">Page not found</span>{" "}
-            
+            <span className="text-[#F8FAFC]">Page not found</span>
           </h1>
-          <p className="text-[#94A3B8] text-m">The link may be broken or the page has moved.</p>
+          <p className="text-[#94A3B8] text-base">The link may be broken or the page has moved.</p>
         </div>
 
         <div>
