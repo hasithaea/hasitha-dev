@@ -62,6 +62,11 @@ export default function NotFound() {
             Back to home
           </Link>
         </div>
+        
+        <p className="mt-10 text-sm text-[#94A3B8]">
+            © 2026 Hasitha Amarasinghe
+        </p>
+
       </div>
     </main>
   );
