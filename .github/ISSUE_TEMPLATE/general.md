@@ -1,3 +1,10 @@
+---
+name: General
+about: Report work, chores, or refactors
+title: ""
+labels: ""
+---
+
 ### What
 <!-- What needs to be done -->
 
