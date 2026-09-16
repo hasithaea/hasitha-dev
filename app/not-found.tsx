@@ -6,7 +6,7 @@ export default function NotFound() {
     <PageShell>
       <div className="max-w-md w-full text-center space-y-8">
         <div className="space-y-3">
-          <span className="inline-block text-2xl tracking-[0.3em] uppercase font-semibold px-3 py-1 -rotate-2 bg-[#1D4ED8] text-[#F8FAFC]">
+          <span className="inline-block text-2xl tracking-[0.3em] uppercase font-semibold px-3 py-1 -rotate-2 bg-orb-color-1 text-text-primary">
             404
           </span>
           <h1 className="text-4xl font-semibold tracking-tight">
@@ -18,7 +18,7 @@ export default function NotFound() {
         <div>
           <Link
             href="/"
-            className="group inline-flex items-center text-sm font-medium text-[#0B1220] rounded-full px-5 py-2.5 transition-transform duration-300 hover:-translate-y-0.5"
+            className="group inline-flex items-center text-sm font-medium text-bg-primary rounded-full px-5 py-2.5 transition-transform duration-300 hover:-translate-y-0.5"
             style={{
               background:
                 "linear-gradient(135deg, #F4D06F 0%, #C9A24B 50%, #E8B33D 100%)",
@@ -28,7 +28,7 @@ export default function NotFound() {
           </Link>
         </div>
         
-        <p className="mt-10 text-sm text-text-muted">
+        <p className="text-sm text-text-muted">
             © 2026 Hasitha Amarasinghe
         </p>
 
