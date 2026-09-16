@@ -1,5 +1,6 @@
 "use client";
 
+import PageShell from "@/components/PageShell";
 import { useState, useEffect, FormEvent } from "react";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -82,58 +83,53 @@ export default function ContactPage() {
 
   if (status === "success") {
     return (
-      <main className="min-h-screen bg-[#0B1220] text-[#F8FAFC] flex items-center justify-center px-4 relative overflow-hidden">
-        <CornerGlow />
-        <GridBackground />
+      <PageShell>
         <div
           className={`max-w-md w-full text-center relative transition-all duration-700 ease-out ${fadeClass}`}
         >
-          <div className="mx-auto mb-6 h-px w-10 bg-[#C9A24B]/60" />
-          <span className="font-mono text-xs tracking-widest text-[#C9A24B] uppercase">
+          <div className="mx-auto mb-6 h-px w-10 bg-accent-gold/60" />
+          <span className="font-mono text-xs tracking-widest text-accent-gold uppercase">
             Message sent
           </span>
-          <h1 className="mt-4 text-2xl font-semibold tracking-tight text-[#F8FAFC]">
+          <h1 className="mt-4 text-2xl font-semibold tracking-tight text-text-primary">
             Thanks. I&apos;ll get back to you soon.
           </h1>
-          <p className="mt-3 text-sm text-[#94A3B8] leading-relaxed">
+          <p className="mt-3 text-sm text-text-muted leading-relaxed">
             A confirmation with a copy of your message is on its way to your
             inbox.
           </p>
           <button
             onClick={() => setStatus("idle")}
-            className="mt-8 text-sm text-[#94A3B8] hover:text-[#F8FAFC] underline underline-offset-4 decoration-[#1d2c47] hover:decoration-[#C9A24B]/60 transition-colors"
+            className="mt-8 text-sm text-text-muted hover:text-text-primary underline underline-offset-4 decoration-[#1d2c47] hover:decoration-accent-gold/60 transition-colors"
           >
             Send another message
           </button>
-          <p className="mt-10 text-sm text-[#94A3B8]">
+          <p className="mt-10 text-sm text-text-muted">
             © 2026 Hasitha Amarasinghe
           </p>
         </div>
-      </main>
+      </PageShell>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[#0B1220] text-[#F8FAFC] flex items-center justify-center px-4 py-16 relative overflow-hidden">
-      <CornerGlow />
-      <GridBackground />
-
+    <PageShell>
       <div
         className={`max-w-md w-full relative transition-all duration-700 ease-out ${fadeClass}`}
       >
         <span className="font-mono text-sm tracking-tight">
-          <span className="text-[#C9A24B]">hasitha</span>
-          <span className="text-[#94A3B8]">.dev</span>
+          <span className="text-accent-gold">hasitha</span>
+          <span className="text-text-muted">.dev</span>
         </span>
 
-        <h1 className="mt-5 text-[34px] sm:text-[38px] leading-[1.1] font-semibold tracking-tight text-[#F8FAFC]">
+        <h1 className="mt-5 text-[34px] sm:text-[38px] leading-[1.1] font-semibold tracking-tight text-text-primary">
           Say hello,
           <br />
           or pitch me
           <br />
           something.
         </h1>
-        <p className="mt-3.5 text-sm text-[#94A3B8] leading-relaxed">
+        <p className="mt-3.5 text-sm text-text-muted leading-relaxed">
           Roles, projects, technical questions. I read every message myself
           and reply personally.
         </p>
@@ -141,7 +137,7 @@ export default function ContactPage() {
         {/* Liquid glass panel */}
         <div className="relative mt-9">
           {/* specular top highlight */}
-          <div className="pointer-events-none absolute -top-px left-6 right-6 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+          <div className="pointer-events-none absolute -top-px left-6 right-6 h-px bg-linear-to-r from-transparent via-white/40 to-transparent" />
           <div
             className="rounded-[26px] p-6 sm:p-7 relative overflow-hidden"
             style={{
@@ -168,7 +164,7 @@ export default function ContactPage() {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-[11px] font-mono tracking-wide text-[#94A3B8] uppercase mb-2"
+                  className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
                 >
                   Name
                 </label>
@@ -178,7 +174,7 @@ export default function ContactPage() {
                   type="text"
                   required
                   maxLength={100}
-                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-[#F8FAFC] placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-[#C9A24B]/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-[#C9A24B]/10"
+                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10"
                   placeholder="Your name"
                 />
               </div>
@@ -186,7 +182,7 @@ export default function ContactPage() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-[11px] font-mono tracking-wide text-[#94A3B8] uppercase mb-2"
+                  className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
                 >
                   Email
                 </label>
@@ -196,7 +192,7 @@ export default function ContactPage() {
                   type="email"
                   required
                   maxLength={200}
-                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-[#F8FAFC] placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-[#C9A24B]/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-[#C9A24B]/10"
+                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10"
                   placeholder="you@example.com"
                 />
               </div>
@@ -204,7 +200,7 @@ export default function ContactPage() {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-[11px] font-mono tracking-wide text-[#94A3B8] uppercase mb-2"
+                  className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
                 >
                   Message
                 </label>
@@ -214,7 +210,7 @@ export default function ContactPage() {
                   required
                   rows={5}
                   maxLength={5000}
-                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-[#F8FAFC] placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-[#C9A24B]/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-[#C9A24B]/10 resize-none"
+                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10 resize-none"
                   placeholder="What's on your mind?"
                 />
               </div>
@@ -226,7 +222,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="w-full bg-[#C9A24B] hover:bg-[#dab566] hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 text-[#0B1220] font-medium text-sm rounded-xl px-4 py-2.5 transition-all duration-200 shadow-[0_8px_24px_-8px_rgba(201,162,75,0.55)]"
+                className="w-full bg-accent-gold hover:bg-[#dab566] hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 text-bg-primary font-medium text-sm rounded-xl px-4 py-2.5 transition-all duration-200 shadow-[0_8px_24px_-8px_rgba(201,162,75,0.55)]"
               >
                 {status === "submitting" ? "Sending…" : "Send message"}
               </button>
@@ -261,8 +257,7 @@ export default function ContactPage() {
               />
               <svg
                 viewBox="0 0 24 24"
-                className="h-5 w-5 relative z-10 fill-[#94A3B8] transition-colors duration-200"
-                style={{ ["--hover-color" as string]: social.color }}
+                className="h-5 w-5 relative z-10 fill-text-muted transition-colors duration-200"
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.fill = social.color)
                 }
@@ -270,57 +265,17 @@ export default function ContactPage() {
               >
                 {social.icon}
               </svg>
-              <span className="relative z-10 text-[10px] font-mono tracking-wide text-[#5b6b85] group-hover:text-[#F8FAFC] transition-colors duration-200">
+              <span className="relative z-10 text-[10px] font-mono tracking-wide text-[#5b6b85] group-hover:text-text-primary transition-colors duration-200">
                 {social.name}
               </span>
             </a>
           ))}
         </div>
 
-        <p className="mt-10 text-center text-sm text-[#94A3B8]">
+        <p className="mt-10 text-center text-sm text-text-muted">
           © 2026 Hasitha Amarasinghe
         </p>
       </div>
-    </main>
-  );
-}
-
-function GridBackground() {
-  return (
-    <div
-      className="pointer-events-none absolute inset-0"
-      style={{
-        backgroundImage:
-          "linear-gradient(rgba(29,78,216,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(29,78,216,0.18) 1px, transparent 1px)",
-        backgroundSize: "56px 56px",
-        maskImage:
-          "radial-gradient(ellipse 60% 55% at 50% 50%, transparent 0%, transparent 30%, black 75%)",
-        WebkitMaskImage:
-          "radial-gradient(ellipse 60% 55% at 50% 50%, transparent 0%, transparent 30%, black 75%)",
-      }}
-    />
-  );
-}
-
-function CornerGlow() {
-  return (
-    <>
-      <div
-        className="pointer-events-none absolute -top-40 -left-40 h-[480px] w-[480px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(29,78,216,0.45) 0%, rgba(29,78,216,0) 70%)",
-          filter: "blur(40px)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute -bottom-40 -right-40 h-[480px] w-[480px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(29,78,216,0.45) 0%, rgba(29,78,216,0) 70%)",
-          filter: "blur(40px)",
-        }}
-      />
-    </>
+    </PageShell>
   );
 }
