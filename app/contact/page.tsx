@@ -115,7 +115,7 @@ export default function ContactPage() {
   return (
     <PageShell>
       <div
-        className={`max-w-md w-full relative transition-all duration-700 ease-out ${fadeClass}`}
+        className={`max-w-md w-full relative py-16 transition-all duration-700 ease-out ${fadeClass}`}
       >
         <span className="font-mono text-sm tracking-tight">
           <span className="text-accent-gold">hasitha</span>
