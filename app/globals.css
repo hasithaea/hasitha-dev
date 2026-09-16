@@ -7,6 +7,8 @@
   --text-primary: #F8FAFC;
   --text-muted: #94A3B8;
   --accent-gold: #C9A24B;
+  --orb-color-1: #1D4ED8;
+  --orb-color-2: #1E40AF;
 }
 
 @theme inline {
