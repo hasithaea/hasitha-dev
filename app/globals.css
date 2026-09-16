@@ -16,6 +16,8 @@
   --color-text-primary: var(--text-primary);
   --color-text-muted: var(--text-muted);
   --color-accent-gold: var(--accent-gold);
+  --color-orb-color-1: var(--orb-color-1);
+  --color-orb-color-2: var(--orb-color-2);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
