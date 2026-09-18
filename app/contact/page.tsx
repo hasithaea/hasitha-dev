@@ -84,29 +84,31 @@ export default function ContactPage() {
   if (status === "success") {
     return (
       <PageShell>
-        <div
-          className={`max-w-md w-full text-center relative transition-all duration-700 ease-out ${fadeClass}`}
-        >
-          <div className="mx-auto mb-6 h-px w-10 bg-accent-gold/60" />
-          <span className="font-mono text-xs tracking-widest text-accent-gold uppercase">
-            Message sent
-          </span>
-          <h1 className="mt-4 text-2xl font-semibold tracking-tight text-text-primary">
-            Thanks. I&apos;ll get back to you soon.
-          </h1>
-          <p className="mt-3 text-sm text-text-muted leading-relaxed">
-            A confirmation with a copy of your message is on its way to your
-            inbox.
-          </p>
-          <button
-            onClick={() => setStatus("idle")}
-            className="mt-8 text-sm text-text-muted hover:text-text-primary underline underline-offset-4 decoration-[#1d2c47] hover:decoration-accent-gold/60 transition-colors"
+        <div className="min-h-screen w-full flex items-center justify-center">
+          <div
+            className={`max-w-md w-full text-center relative transition-all duration-700 ease-out ${fadeClass}`}
           >
-            Send another message
-          </button>
-          <p className="mt-10 text-sm text-text-muted">
-            © 2026 Hasitha Amarasinghe
-          </p>
+            <div className="mx-auto mb-6 h-px w-10 bg-accent-gold/60" />
+            <span className="font-mono text-xs tracking-widest text-accent-gold uppercase">
+              Message sent
+            </span>
+            <h1 className="mt-4 text-2xl font-semibold tracking-tight text-text-primary">
+              Thanks. I&apos;ll get back to you soon.
+            </h1>
+            <p className="mt-3 text-sm text-text-muted leading-relaxed">
+              A confirmation with a copy of your message is on its way to your
+              inbox.
+            </p>
+            <button
+              onClick={() => setStatus("idle")}
+              className="mt-8 text-sm text-text-muted hover:text-text-primary underline underline-offset-4 decoration-[#1d2c47] hover:decoration-accent-gold/60 transition-colors"
+            >
+              Send another message
+            </button>
+            <p className="mt-10 text-sm text-text-muted">
+              © 2026 Hasitha Amarasinghe
+            </p>
+          </div>
         </div>
       </PageShell>
     );
@@ -114,6 +116,7 @@ export default function ContactPage() {
 
   return (
     <PageShell>
+      <div className="min-h-screen w-full flex items-center justify-center">
       <div
         className={`max-w-md w-full relative py-16 transition-all duration-700 ease-out ${fadeClass}`}
       >
@@ -275,6 +278,7 @@ export default function ContactPage() {
         <p className="mt-10 text-center text-sm text-text-muted">
           © 2026 Hasitha Amarasinghe
         </p>
+      </div>
       </div>
     </PageShell>
   );
