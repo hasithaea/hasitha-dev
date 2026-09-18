@@ -23,6 +23,7 @@ export default function ComingSoon() {
 
   return (
     <PageShell>
+      <div className="min-h-screen w-full flex items-center justify-center">
       <div className="max-w-md w-full text-center space-y-8">
         <div className="space-y-3">
           <span className="inline-block text-xs tracking-[0.3em] uppercase font-semibold px-3 py-1 -rotate-2 bg-[#1D4ED8] text-[#F8FAFC]">
@@ -66,6 +67,7 @@ export default function ComingSoon() {
         </a>
 
         <p className="text-sm text-text-muted">© 2026 Hasitha Amarasinghe</p>
+      </div>
       </div>
     </PageShell>
   );
