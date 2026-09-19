@@ -16,18 +16,22 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
       />
 
       {/* orbs */}
+      {/* top left - A */}
       <div
         className="pointer-events-none fixed w-140 h-140 rounded-full bg-orb-color-1/20 blur-[100px] z-0"
         style={{ top: "-15%", left: "-15%", animation: "driftA 14s ease-in-out infinite" }}
       />
+      {/* bottom right - B */}
       <div
         className="pointer-events-none fixed w-130 h-130 rounded-full bg-orb-color-2/20 blur-[100px] z-0"
         style={{ bottom: "-15%", right: "-15%", animation: "driftB 16s ease-in-out infinite" }}
       />
+      {/* top right - C */}
       <div
         className="pointer-events-none fixed w-125 h-125 rounded-full bg-orb-color-2/15 blur-[100px] z-0"
         style={{ top: "-15%", right: "-15%", animation: "driftC 18s ease-in-out infinite" }}
       />
+      {/* bottom left - D */}
       <div
         className="pointer-events-none fixed w-125 h-125 rounded-full bg-orb-color-1/15 blur-[100px] z-0"
         style={{ bottom: "-15%", left: "-15%", animation: "driftD 15s ease-in-out infinite" }}
