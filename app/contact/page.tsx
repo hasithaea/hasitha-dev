@@ -1,6 +1,7 @@
 "use client";
 
 import PageShell from "@/components/PageShell";
+import Button from "@/components/Button";
 import { useState, useEffect, FormEvent } from "react";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -99,15 +100,15 @@ export default function ContactPage() {
               A confirmation with a copy of your message is on its way to your
               inbox.
             </p>
-            <button
-              onClick={() => setStatus("idle")}
-              className="mt-8 text-sm text-text-muted hover:text-text-primary underline underline-offset-4 decoration-[#1d2c47] hover:decoration-accent-gold/60 transition-colors"
-            >
-              Send another message
-            </button>
+    
+            <Button variant="link" className="mt-8" onClick={() => setStatus("idle")}>
+               Send another message
+            </Button>
+
             <p className="mt-10 text-sm text-text-muted">
               © 2026 Hasitha Amarasinghe
             </p>
+        
           </div>
         </div>
       </PageShell>
@@ -222,13 +223,10 @@ export default function ContactPage() {
                 <p className="text-sm text-red-400">{errorMessage}</p>
               )}
 
-              <button
-                type="submit"
-                disabled={status === "submitting"}
-                className="w-full bg-accent-gold hover:bg-[#dab566] hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 text-bg-primary font-medium text-sm rounded-xl px-4 py-2.5 transition-all duration-200 shadow-[0_8px_24px_-8px_rgba(201,162,75,0.55)]"
-              >
+              <Button variant="solid" type="submit" disabled={status === "submitting"}>
                 {status === "submitting" ? "Sending…" : "Send message"}
-              </button>
+              </Button>
+              
             </form>
           </div>
         </div>
