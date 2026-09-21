@@ -117,11 +117,11 @@ export default function ContactPage() {
 
   return (
     <PageShell>
-      <div className="min-h-screen w-full flex items-center justify-center">
+      <div className="min-h-screen w-full flex items-center justify-center pt-24">
       <div
-        className={`max-w-md w-full relative py-16 transition-all duration-700 ease-out ${fadeClass}`}
+        className={`max-w-md w-full relative pb-16 transition-all duration-700 ease-out ${fadeClass}`}
       >
-        <h1 className="mt-5 text-[34px] sm:text-[38px] leading-[1.1] font-semibold tracking-tight text-text-primary">
+        <h1 className="text-[34px] sm:text-[38px] leading-[1.1] font-semibold tracking-tight text-text-primary">
           Say hello,
           <br />
           or pitch me
