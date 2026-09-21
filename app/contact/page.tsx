@@ -164,7 +164,7 @@ export default function ContactPage() {
                 type="text"
                 required
                 maxLength={100}
-                className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10"
+                className="w-full bg-white/4 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/6 focus:ring-4 focus:ring-accent-gold/10"
                 placeholder="Your name"
               />
             </div>
@@ -182,7 +182,7 @@ export default function ContactPage() {
                 type="email"
                 required
                 maxLength={200}
-                className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10"
+                className="w-full bg-white/4 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/6 focus:ring-4 focus:ring-accent-gold/10"
                 placeholder="you@example.com"
               />
             </div>
@@ -200,7 +200,7 @@ export default function ContactPage() {
                 required
                 rows={5}
                 maxLength={5000}
-                className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10 resize-none"
+                className="w-full bg-white/4 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/6 focus:ring-4 focus:ring-accent-gold/10 resize-none"
                 placeholder="What's on your mind?"
               />
             </div>
