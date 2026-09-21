@@ -1,5 +1,5 @@
-import Link from "next/link";
 import PageShell from "@/components/PageShell";
+import Button from "@/components/Button";
 
 export default function NotFound() {
   return (
@@ -17,16 +17,7 @@ export default function NotFound() {
           </div>
 
           <div>
-            <Link
-              href="/"
-              className="group inline-flex items-center text-sm font-medium text-bg-primary rounded-full px-5 py-2.5 transition-transform duration-300 hover:-translate-y-0.5"
-              style={{
-                background:
-                  "linear-gradient(135deg, #F4D06F 0%, #C9A24B 50%, #E8B33D 100%)",
-              }}
-            >
-              Back to home
-            </Link>
+            <Button href="/">Back to home</Button>
           </div>
 
           <p className="text-sm text-text-muted">
