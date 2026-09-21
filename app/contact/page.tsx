@@ -121,11 +121,6 @@ export default function ContactPage() {
       <div
         className={`max-w-md w-full relative py-16 transition-all duration-700 ease-out ${fadeClass}`}
       >
-        <span className="font-mono text-sm tracking-tight">
-          <span className="text-accent-gold">hasitha</span>
-          <span className="text-text-muted">.dev</span>
-        </span>
-
         <h1 className="mt-5 text-[34px] sm:text-[38px] leading-[1.1] font-semibold tracking-tight text-text-primary">
           Say hello,
           <br />
