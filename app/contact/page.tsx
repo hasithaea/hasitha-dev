@@ -154,7 +154,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
+                    className="block text-[11px] font-mono tracking-wide text-text-primary/80 uppercase mb-2"
                   >
                     Name
                   </label>
@@ -172,7 +172,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
+                    className="block text-[11px] font-mono tracking-wide text-text-primary/80 uppercase mb-2"
                   >
                     Email
                   </label>
@@ -190,7 +190,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
+                    className="block text-[11px] font-mono tracking-wide text-text-primary/80 uppercase mb-2"
                   >
                     Message
                   </label>
