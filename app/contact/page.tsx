@@ -139,119 +139,95 @@ export default function ContactPage() {
         </p>
 
         {/* Liquid glass panel */}
-        <div className="relative mt-9">
-          {/* specular top highlight */}
-          <div className="pointer-events-none absolute -top-px left-6 right-6 h-px bg-linear-to-r from-transparent via-white/40 to-transparent" />
-          <div
-            className="rounded-[26px] p-6 sm:p-7 relative overflow-hidden"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-              backdropFilter: "blur(24px) saturate(160%)",
-              WebkitBackdropFilter: "blur(24px) saturate(160%)",
-              border: "1px solid rgba(148,163,184,0.16)",
-              boxShadow:
-                "0 1px 0 0 rgba(255,255,255,0.08) inset, 0 -1px 0 0 rgba(0,0,0,0.3) inset, 0 30px 80px -30px rgba(0,0,0,0.7), 0 0 40px -20px rgba(29,78,216,0.35)",
-            }}
-          >
-            <form onSubmit={handleSubmit} className="space-y-5 relative">
-              {/* Honeypot field */}
+        <div className="glass mt-9 rounded-[26px] p-6 sm:p-7 [--glass-drop:0_30px_80px_-30px_rgba(0,0,0,0.7),0_0_40px_-20px_rgba(29,78,216,0.35)]">
+          <form onSubmit={handleSubmit} className="space-y-5 relative">
+            {/* Honeypot field */}
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+            />
+
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
+              >
+                Name
+              </label>
               <input
+                id="name"
+                name="name"
                 type="text"
-                name="website"
-                tabIndex={-1}
-                autoComplete="off"
-                className="hidden"
-                aria-hidden="true"
+                required
+                maxLength={100}
+                className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10"
+                placeholder="Your name"
               />
+            </div>
 
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  maxLength={100}
-                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10"
-                  placeholder="Your name"
-                />
-              </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                maxLength={200}
+                className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10"
+                placeholder="you@example.com"
+              />
+            </div>
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  maxLength={200}
-                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10"
-                  placeholder="you@example.com"
-                />
-              </div>
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={5}
+                maxLength={5000}
+                className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10 resize-none"
+                placeholder="What's on your mind?"
+              />
+            </div>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  maxLength={5000}
-                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10 resize-none"
-                  placeholder="What's on your mind?"
-                />
-              </div>
+            {status === "error" && (
+              <p className="text-sm text-red-400">{errorMessage}</p>
+            )}
 
-              {status === "error" && (
-                <p className="text-sm text-red-400">{errorMessage}</p>
-              )}
-
-              <Button variant="solid" type="submit" disabled={status === "submitting"}>
-                {status === "submitting" ? "Sending…" : "Send message"}
-              </Button>
-              
-            </form>
-          </div>
+            <Button variant="solid" type="submit" disabled={status === "submitting"}>
+              {status === "submitting" ? "Sending…" : "Send message"}
+            </Button>    
+          </form>
         </div>
 
         {/* Social icon cards */}
         <div className="mt-5 grid grid-cols-3 gap-3">
           {SOCIALS.map((social) => (
-            <a
+            <a            
               key={social.name}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.name}
-              className="group relative flex flex-col items-center justify-center gap-2 rounded-2xl py-4 transition-all duration-200 hover:-translate-y-0.5 overflow-hidden"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.015) 100%)",
-                backdropFilter: "blur(20px) saturate(160%)",
-                WebkitBackdropFilter: "blur(20px) saturate(160%)",
-                border: "1px solid rgba(148,163,184,0.14)",
-                boxShadow: "0 1px 0 0 rgba(255,255,255,0.06) inset",
-              }}
+              className="group glass flex flex-col items-center justify-center gap-2 rounded-2xl py-4 transition-all duration-200 hover:-translate-y-0.5"
             >
               <span
-                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{
                   background: `radial-gradient(circle at 50% 30%, ${social.color}33 0%, transparent 70%)`,
                 }}
