@@ -1,6 +1,7 @@
 "use client";
 
 import PageShell from "@/components/PageShell";
+import Button from "@/components/Button";
 import {
   FaGithub,
   FaLinkedin,
@@ -56,15 +57,9 @@ export default function ComingSoon() {
         </div>
 
         {/* email and  name */}
-        <a
-          href={"mailto:" + mailUser + "@" + mailDomain}
-          className="group inline-flex items-center text-sm font-medium text-bg-primary rounded-full px-5 py-2.5 transition-transform duration-300 hover:-translate-y-0.5"
-          style={{
-            background: "linear-gradient(135deg, #F4D06F 0%, #C9A24B 50%, #E8B33D 100%)",
-          }}
-        >
+        <Button href={"mailto:" + mailUser + "@" + mailDomain}>
           <span>{mailUser}<span aria-hidden="true">@</span>{mailDomain}</span>
-        </a>
+        </Button>
 
         <p className="text-sm text-text-muted">© 2026 Hasitha Amarasinghe</p>
       </div>
