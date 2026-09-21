@@ -27,3 +27,39 @@ body {
   color: var(--text-primary);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Liquid glass */
+@layer components {
+  .glass {
+    position: relative;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.08) inset,
+      0 -1px 0 0 rgba(0, 0, 0, 0.3) inset,
+      var(--glass-drop, 0 0 #0000);
+  }
+
+  /* specular top highlight */
+  .glass::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    top: -1px;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+  }
+}
