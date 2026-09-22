@@ -51,6 +51,7 @@ export default function Button({
   }
 
   // anything else use <a> tag
+  // external links opens in new tab (mailto, tel unaffected)
   const isExternal = !href.startsWith("mailto:") && !href.startsWith("tel:");
   return (
     <a
