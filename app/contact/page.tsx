@@ -100,15 +100,14 @@ export default function ContactPage() {
               A confirmation with a copy of your message is on its way to your
               inbox.
             </p>
-    
+
             <Button variant="link" className="mt-8" onClick={() => setStatus("idle")}>
-               Send another message
+              Send another message
             </Button>
 
             <p className="mt-10 text-sm text-text-muted">
               © 2026 Hasitha Amarasinghe
             </p>
-        
           </div>
         </div>
       </PageShell>
@@ -117,166 +116,144 @@ export default function ContactPage() {
 
   return (
     <PageShell>
-      <div className="min-h-screen w-full flex items-center justify-center">
-      <div
-        className={`max-w-md w-full relative py-16 transition-all duration-700 ease-out ${fadeClass}`}
-      >
-        <span className="font-mono text-sm tracking-tight">
-          <span className="text-accent-gold">hasitha</span>
-          <span className="text-text-muted">.dev</span>
-        </span>
+      <div className="min-h-screen w-full flex items-center justify-center pt-24">
+        <div
+          className={`max-w-md w-full relative pb-16 transition-all duration-700 ease-out ${fadeClass}`}
+        >
+          <h1 className="text-[34px] sm:text-[38px] leading-[1.1] font-semibold tracking-tight text-text-primary">
+            Say hello,
+            <br />
+            or pitch me
+            <br />
+            something.
+          </h1>
+          <p className="mt-3.5 text-sm text-text-muted leading-relaxed">
+            Roles, projects, technical questions. I read every message myself
+            and reply personally.
+          </p>
 
-        <h1 className="mt-5 text-[34px] sm:text-[38px] leading-[1.1] font-semibold tracking-tight text-text-primary">
-          Say hello,
-          <br />
-          or pitch me
-          <br />
-          something.
-        </h1>
-        <p className="mt-3.5 text-sm text-text-muted leading-relaxed">
-          Roles, projects, technical questions. I read every message myself
-          and reply personally.
-        </p>
-
-        {/* Liquid glass panel */}
-        <div className="relative mt-9">
-          {/* specular top highlight */}
-          <div className="pointer-events-none absolute -top-px left-6 right-6 h-px bg-linear-to-r from-transparent via-white/40 to-transparent" />
-          <div
-            className="rounded-[26px] p-6 sm:p-7 relative overflow-hidden"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-              backdropFilter: "blur(24px) saturate(160%)",
-              WebkitBackdropFilter: "blur(24px) saturate(160%)",
-              border: "1px solid rgba(148,163,184,0.16)",
-              boxShadow:
-                "0 1px 0 0 rgba(255,255,255,0.08) inset, 0 -1px 0 0 rgba(0,0,0,0.3) inset, 0 30px 80px -30px rgba(0,0,0,0.7), 0 0 40px -20px rgba(29,78,216,0.35)",
-            }}
-          >
-            <form onSubmit={handleSubmit} className="space-y-5 relative">
-              {/* Honeypot field */}
-              <input
-                type="text"
-                name="website"
-                tabIndex={-1}
-                autoComplete="off"
-                className="hidden"
-                aria-hidden="true"
-              />
-
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
-                >
-                  Name
-                </label>
+          {/* Liquid glass panel */}
+          <div className="relative mt-9">
+            {/* orb behind the form */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orb-color-1/40 blur-[80px] sm:h-96 sm:w-96"
+            />
+            <div className="glass rounded-[26px] p-6 sm:p-7 [--glass-drop:0_30px_80px_-30px_rgba(0,0,0,0.7),0_0_40px_-20px_rgba(29,78,216,0.35)]">
+              <form onSubmit={handleSubmit} className="space-y-5 relative">
+                {/* Honeypot field */}
                 <input
-                  id="name"
-                  name="name"
                   type="text"
-                  required
-                  maxLength={100}
-                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10"
-                  placeholder="Your name"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
                 />
-              </div>
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  maxLength={200}
-                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10"
-                  placeholder="you@example.com"
-                />
-              </div>
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-[11px] font-mono tracking-wide text-text-primary/80 uppercase mb-2"
+                  >
+                    Name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    maxLength={100}
+                    className="w-full bg-white/4 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/6 focus:ring-4 focus:ring-accent-gold/10"
+                    placeholder="Your name"
+                  />
+                </div>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-[11px] font-mono tracking-wide text-text-muted uppercase mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  maxLength={5000}
-                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/[0.06] focus:ring-4 focus:ring-accent-gold/10 resize-none"
-                  placeholder="What's on your mind?"
-                />
-              </div>
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-[11px] font-mono tracking-wide text-text-primary/80 uppercase mb-2"
+                  >
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    maxLength={200}
+                    className="w-full bg-white/4 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/6 focus:ring-4 focus:ring-accent-gold/10"
+                    placeholder="you@example.com"
+                  />
+                </div>
 
-              {status === "error" && (
-                <p className="text-sm text-red-400">{errorMessage}</p>
-              )}
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-[11px] font-mono tracking-wide text-text-primary/80 uppercase mb-2"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={5}
+                    maxLength={5000}
+                    className="w-full bg-white/4 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/6 focus:ring-4 focus:ring-accent-gold/10 resize-none"
+                    placeholder="What's on your mind?"
+                  />
+                </div>
 
-              <Button variant="solid" type="submit" disabled={status === "submitting"}>
-                {status === "submitting" ? "Sending…" : "Send message"}
-              </Button>
-              
-            </form>
+                {status === "error" && (
+                  <p className="text-sm text-red-400">{errorMessage}</p>
+                )}
+
+                <Button variant="solid" type="submit" disabled={status === "submitting"}>
+                  {status === "submitting" ? "Sending…" : "Send message"}
+                </Button>
+              </form>
+            </div>
           </div>
-        </div>
 
-        {/* Social icon cards */}
-        <div className="mt-5 grid grid-cols-3 gap-3">
-          {SOCIALS.map((social) => (
-            <a
-              key={social.name}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={social.name}
-              className="group relative flex flex-col items-center justify-center gap-2 rounded-2xl py-4 transition-all duration-200 hover:-translate-y-0.5 overflow-hidden"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.015) 100%)",
-                backdropFilter: "blur(20px) saturate(160%)",
-                WebkitBackdropFilter: "blur(20px) saturate(160%)",
-                border: "1px solid rgba(148,163,184,0.14)",
-                boxShadow: "0 1px 0 0 rgba(255,255,255,0.06) inset",
-              }}
-            >
-              <span
-                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{
-                  background: `radial-gradient(circle at 50% 30%, ${social.color}33 0%, transparent 70%)`,
-                }}
-              />
-              <svg
-                viewBox="0 0 24 24"
-                className="h-5 w-5 relative z-10 fill-text-muted transition-colors duration-200"
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.fill = social.color)
-                }
-                onMouseLeave={(e) => (e.currentTarget.style.fill = "#94A3B8")}
+          {/* Social icon cards */}
+          <div className="mt-5 grid grid-cols-3 gap-3">
+            {SOCIALS.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                className="group glass flex flex-col items-center justify-center gap-2 rounded-2xl py-4 transition-all duration-200 hover:-translate-y-0.5"
               >
-                {social.icon}
-              </svg>
-              <span className="relative z-10 text-[10px] font-mono tracking-wide text-[#5b6b85] group-hover:text-text-primary transition-colors duration-200">
-                {social.name}
-              </span>
-            </a>
-          ))}
-        </div>
+                <span
+                  className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: `radial-gradient(circle at 50% 30%, ${social.color}33 0%, transparent 70%)`,
+                  }}
+                />
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5 relative z-10 fill-text-muted transition-colors duration-200"
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.fill = social.color)
+                  }
+                  onMouseLeave={(e) => (e.currentTarget.style.fill = "#94A3B8")}
+                >
+                  {social.icon}
+                </svg>
+                <span className="relative z-10 text-[10px] font-mono tracking-wide text-[#5b6b85] group-hover:text-text-primary transition-colors duration-200">
+                  {social.name}
+                </span>
+              </a>
+            ))}
+          </div>
 
-        <p className="mt-10 text-center text-sm text-text-muted">
-          © 2026 Hasitha Amarasinghe
-        </p>
-      </div>
+          <p className="mt-10 text-center text-sm text-text-muted">
+            © 2026 Hasitha Amarasinghe
+          </p>
+        </div>
       </div>
     </PageShell>
   );
