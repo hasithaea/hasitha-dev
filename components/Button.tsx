@@ -49,9 +49,17 @@ export default function Button({
       </Link>
     );
   }
+
   // anything else use <a> tag
+  const isExternal = !href.startsWith("mailto:") && !href.startsWith("tel:");
   return (
-    <a href={href} className={cls} style={style}>
+    <a
+      href={href}
+      className={cls}
+      style={style}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+    >
       {children}
     </a>
   );
