@@ -63,8 +63,8 @@ export function Footer({ variant = "full" }: FooterProps) {
             <p className="text-sm leading-relaxed text-text-muted">
               Building, deliberately.
             </p>
-            <div className="mt-2 flex flex-wrap gap-4">
-              <Button href="/contact" className="w-full justify-center">
+            <div className="mt-4 inline-flex items-center flex-wrap gap-4">
+              <Button href="/contact">
                 Contact
               </Button>
             </div>
