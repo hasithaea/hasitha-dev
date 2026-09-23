@@ -42,12 +42,12 @@ export function Footer({ variant = "full" }: FooterProps) {
 
   return (
     <footer className="glass mt-auto w-full border-t border-text-primary/6 py-12 md:py-16">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
 
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-4">
 
           {/* Brand Column */}
-          <div className="flex flex-col gap-2 sm:col-span-2 lg:col-span-1">
+          <div className="flex flex-col gap-2 max-w-md lg:mr-40">
 
             <Link href="/" className="text-3xl font-semibold tracking-tight">
               <span className="text-accent-gold">hasitha</span>
@@ -71,8 +71,8 @@ export function Footer({ variant = "full" }: FooterProps) {
           </div>
 
           {/* Navigation Column */}
-          <div>
-            <h3 className="mb-6 text-sm font-semibold tracking-widest text-text-primary/80">NAVIGATION</h3>
+          <div className="lg:flex-1">
+            <h3 className="mb-3 text-sm font-semibold tracking-widest text-text-primary/80">NAVIGATION</h3>
             <ul className="flex flex-col gap-2">
               {navigationLinks.map((link) => (
                 <li key={link.href}>
@@ -85,8 +85,8 @@ export function Footer({ variant = "full" }: FooterProps) {
           </div>
 
           {/* Legal & Policy Column */}
-          <div>
-            <h3 className="mb-6 text-sm font-semibold tracking-widest text-text-primary/80">LEGAL & POLICY</h3>
+          <div className="lg:flex-1">
+            <h3 className="mb-3 text-sm font-semibold tracking-widest text-text-primary/80">LEGAL & POLICY</h3>
             <ul className="flex flex-col gap-2">
               {legalLinks.map((link) => (
                 <li key={link.href}>
@@ -99,8 +99,8 @@ export function Footer({ variant = "full" }: FooterProps) {
           </div>
 
           {/* Connect Column */}
-          <div>
-            <h3 className="mb-6 text-sm font-semibold tracking-widest text-text-primary/80">CONNECT</h3>
+          <div className="lg:flex-1">
+            <h3 className="mb-3 text-sm font-semibold tracking-widest text-text-primary/80">CONNECT</h3>
             <div className="flex flex-col gap-2">
               {connectLinks.map((link) => (
                 <a
