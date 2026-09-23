@@ -118,7 +118,7 @@ export function Footer({ variant = "full" }: FooterProps) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-5 flex flex-col items-center justify-center gap-4 border-t border-white/[0.06] pt-4 sm:flex-row">
+        <div className="mt-5 flex flex-col items-center justify-center gap-4 border-t border-[#1E293B] pt-4 sm:flex-row">
           <p className="text-sm text-text-muted">
             © {year} Hasitha Amarasinghe
           </p>
