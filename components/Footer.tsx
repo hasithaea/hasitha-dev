@@ -27,7 +27,7 @@ const connectLinks = [
   { label: "Discord", href: "https://discord.com/users/hasithaea" },
 ];
 
-export function Footer({ variant = "full" }: FooterProps) {
+export default function Footer({ variant = "full" }: FooterProps) {
   const year = new Date().getFullYear();
 
   if (variant === "compact") {
