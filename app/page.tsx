@@ -1,6 +1,7 @@
 "use client";
 
 import PageShell from "@/components/PageShell";
+import {Footer} from "@/components/Footer";
 import Button from "@/components/Button";
 import {
   FaGithub,
@@ -23,7 +24,7 @@ export default function ComingSoon() {
   ];
 
   return (
-    <PageShell>
+    <PageShell footer={<Footer/>}>
       <div className="min-h-screen w-full flex items-center justify-center">
       <div className="max-w-md w-full text-center space-y-8">
         <div className="space-y-3">
@@ -60,8 +61,9 @@ export default function ComingSoon() {
         <Button href={"mailto:" + mailUser + "@" + mailDomain}>
           <span>{mailUser}<span aria-hidden="true">@</span>{mailDomain}</span>
         </Button>
+        
+        
 
-        <p className="text-sm text-text-muted">© 2026 Hasitha Amarasinghe</p>
       </div>
       </div>
     </PageShell>
