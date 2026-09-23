@@ -21,7 +21,7 @@ const legalLinks = [
 
 const connectLinks = [
   { label: "LinkedIn", href: "https://linkedin.com/in/hasithaea" },
-  { label: "GitHub", href: "https://github.com/hasithaea"},
+  { label: "GitHub", href: "https://github.com/hasithaea" },
   { label: "X (Twitter)", href: "https://x.com/hasithaea" },
   { label: "Docker Hub", href: "https://hub.docker.com/u/hasithaea" },
   { label: "Discord", href: "https://discord.com/users/hasithaea" },
@@ -44,16 +44,15 @@ export function Footer({ variant = "full" }: FooterProps) {
     <footer className="glass mt-auto w-full border-t border-text-primary/6 py-12 md:py-16">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-4">
+        <div className="flex flex-col gap-12 md:flex-row md:items-start md:gap-8">
 
           {/* Brand Column */}
-          <div className="flex flex-col gap-2 max-w-md lg:mr-40">
+          <div className="flex flex-col gap-2 max-w-md md:mr-8 lg:mr-32">
 
             <Link href="/" className="text-3xl font-semibold tracking-tight">
               <span className="text-accent-gold">hasitha</span>
               <span className="text-text-muted">.dev</span>
             </Link>
-
 
             <h2 className="text-base">
               <span className="font-bold text-text-primary">Hasitha</span>{" "}
@@ -71,9 +70,9 @@ export function Footer({ variant = "full" }: FooterProps) {
           </div>
 
           {/* Navigation Column */}
-          <div className="lg:flex-1">
+          <div className="md:flex-1">
             <h3 className="mb-3 text-sm font-semibold tracking-widest text-text-primary/80">NAVIGATION</h3>
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-1">
               {navigationLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm text-text-muted transition-colors hover:text-text-primary">
@@ -85,9 +84,9 @@ export function Footer({ variant = "full" }: FooterProps) {
           </div>
 
           {/* Legal & Policy Column */}
-          <div className="lg:flex-1">
+          <div className="md:flex-1">
             <h3 className="mb-3 text-sm font-semibold tracking-widest text-text-primary/80">LEGAL & POLICY</h3>
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-1">
               {legalLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm text-text-muted transition-colors hover:text-text-primary">
@@ -99,26 +98,27 @@ export function Footer({ variant = "full" }: FooterProps) {
           </div>
 
           {/* Connect Column */}
-          <div className="lg:flex-1">
+          <div className="md:flex-1">
             <h3 className="mb-3 text-sm font-semibold tracking-widest text-text-primary/80">CONNECT</h3>
-            <div className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-1">
               {connectLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-text-muted transition-colors hover:text-text-primary"
-                >
-                  {link.label}
-                </a>
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-text-muted transition-colors hover:text-text-primary"
+                  >
+                    {link.label}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-5 flex flex-col items-center justify-center gap-4 border-t border-[#1E293B] pt-4 sm:flex-row">
+        <div className="mt-5 flex flex-col items-center justify-center gap-4 border-t border-[#1E293B] pt-4 md:flex-row">
           <p className="text-sm text-text-muted">
             © {year} Hasitha Amarasinghe
           </p>
