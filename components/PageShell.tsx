@@ -1,6 +1,12 @@
-export default function PageShell({ children }: { children: React.ReactNode }) {
+export default function PageShell({ 
+  children,
+  footer,
+}: { 
+  children: React.ReactNode;
+  footer?: React.ReactNode;
+}) {
   return (
-    <main className="min-h-screen bg-bg-primary text-text-primary relative">
+    <main className="min-h-screen bg-bg-primary text-text-primary relative flex-col">
       {/* grid background */}
       <div
         className="pointer-events-none fixed inset-0 z-0"
@@ -62,9 +68,10 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
         }
       `}</style>
 
-      <div className="relative z-10 flex flex-col items-center px-6">
+      <div className="relative z-10 flex flex-1 flex-col items-center px-6">
         {children}
       </div>
+      {footer}
     </main>
   );
 }
