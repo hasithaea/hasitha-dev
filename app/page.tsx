@@ -1,7 +1,7 @@
 "use client";
 
 import PageShell from "@/components/PageShell";
-import {Footer} from "@/components/Footer";
+import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import {
   FaGithub,
@@ -60,10 +60,7 @@ export default function ComingSoon() {
         {/* email and  name */}
         <Button href={"mailto:" + mailUser + "@" + mailDomain}>
           <span>{mailUser}<span aria-hidden="true">@</span>{mailDomain}</span>
-        </Button>
-        
-        
-
+        </Button> 
       </div>
       </div>
     </PageShell>
