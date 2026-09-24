@@ -1,10 +1,11 @@
 import PageShell from "@/components/PageShell";
 import Button from "@/components/Button";
+import Footer from "@/components/Footer";
 
 
 export default function PrivacyPolicyPage() {
   return (
-    <PageShell>
+    <PageShell footer={<Footer/>}>
       <div className="mx-auto max-w-3xl px-6 py-24 text-text-muted">
         <h1 className="text-3xl font-semibold text-text-primary sm:text-4xl">
           Privacy Policy
