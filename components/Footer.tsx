@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Button from "./Button";
 
+// <PageShell footer={<Footer/>}>
+// <PageShell footer={<Footer variant="compact"/>}>
+
 type FooterVariant = "full" | "compact";
 
 interface FooterProps {
