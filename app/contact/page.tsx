@@ -2,6 +2,7 @@
 
 import PageShell from "@/components/PageShell";
 import Button from "@/components/Button";
+import Footer from "@/components/Footer";
 import { useState, useEffect, FormEvent } from "react";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -84,8 +85,8 @@ export default function ContactPage() {
 
   if (status === "success") {
     return (
-      <PageShell>
-        <div className="min-h-screen w-full flex items-center justify-center">
+      <PageShell footer={<Footer variant="compact"/>}>
+        <div className="flex-1 w-full flex items-center justify-center">
           <div
             className={`max-w-md w-full text-center relative transition-all duration-700 ease-out ${fadeClass}`}
           >
@@ -104,10 +105,6 @@ export default function ContactPage() {
             <Button variant="link" className="mt-8" onClick={() => setStatus("idle")}>
               Send another message
             </Button>
-
-            <p className="mt-10 text-sm text-text-muted">
-              © 2026 Hasitha Amarasinghe
-            </p>
           </div>
         </div>
       </PageShell>
@@ -115,7 +112,7 @@ export default function ContactPage() {
   }
 
   return (
-    <PageShell>
+    <PageShell footer={<Footer variant="compact"/>}>
       <div className="min-h-screen w-full flex items-center justify-center pt-24">
         <div
           className={`max-w-md w-full relative pb-16 transition-all duration-700 ease-out ${fadeClass}`}
@@ -249,10 +246,6 @@ export default function ContactPage() {
               </a>
             ))}
           </div>
-
-          <p className="mt-10 text-center text-sm text-text-muted">
-            © 2026 Hasitha Amarasinghe
-          </p>
         </div>
       </div>
     </PageShell>
