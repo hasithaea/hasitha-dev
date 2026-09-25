@@ -57,7 +57,7 @@ export default function Footer({ variant = "full" }: FooterProps) {
             </h2>
 
             <p className="text-sm leading-relaxed text-text-muted">
-              I build pipelines and keep servers alive. Currently focused on automation and reliability.
+              Exploring Linux, DevOps, and automation.
             </p>
             
             <div className="mt-4 inline-flex items-center flex-wrap gap-4">
