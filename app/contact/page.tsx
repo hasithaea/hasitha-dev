@@ -34,6 +34,9 @@ const SOCIALS = [
   },
 ];
 
+const inputStyles =
+  "w-full bg-white/[0.03] border border-border-color rounded-xl px-4 py-3 text-sm text-text-primary placeholder:text-text-muted/50 outline-none transition-all duration-200 focus:border-accent/60 focus:bg-white/[0.05] focus:ring-4 focus:ring-accent/10";
+
 export default function ContactPage() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -85,13 +88,13 @@ export default function ContactPage() {
 
   if (status === "success") {
     return (
-      <PageShell footer={<Footer variant="compact"/>}>
-        <div className="flex-1 w-full flex items-center justify-center">
+      <PageShell footer={<Footer variant="compact" />}>
+        <div className="flex-1 w-full flex items-center justify-center py-20">
           <div
             className={`max-w-md w-full text-center relative transition-all duration-700 ease-out ${fadeClass}`}
           >
-            <div className="mx-auto mb-6 h-px w-10 bg-accent-gold/60" />
-            <span className="font-mono text-xs tracking-widest text-accent-gold uppercase">
+            <div className="mx-auto mb-6 h-px w-10 bg-accent/60" />
+            <span className="font-mono text-xs tracking-widest text-accent uppercase">
               Message sent
             </span>
             <h1 className="mt-4 text-2xl font-semibold tracking-tight text-text-primary">
@@ -102,7 +105,11 @@ export default function ContactPage() {
               inbox.
             </p>
 
-            <Button variant="link" className="mt-8" onClick={() => setStatus("idle")}>
+            <Button
+              variant="link"
+              className="mt-8"
+              onClick={() => setStatus("idle")}
+            >
               Send another message
             </Button>
           </div>
@@ -112,7 +119,7 @@ export default function ContactPage() {
   }
 
   return (
-    <PageShell footer={<Footer variant="compact"/>}>
+    <PageShell footer={<Footer variant="compact" />}>
       <div className="min-h-screen w-full flex items-center justify-center pt-24">
         <div
           className={`max-w-md w-full relative pb-16 transition-all duration-700 ease-out ${fadeClass}`}
@@ -131,12 +138,7 @@ export default function ContactPage() {
 
           {/* Liquid glass panel */}
           <div className="relative mt-9">
-            {/* orb behind the form */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orb-color-1/40 blur-[80px] sm:h-96 sm:w-96"
-            />
-            <div className="glass rounded-[26px] p-6 sm:p-7 [--glass-drop:0_30px_80px_-30px_rgba(0,0,0,0.7),0_0_40px_-20px_rgba(29,78,216,0.35)]">
+            <div className="glass rounded-[26px] p-6 sm:p-7 [--glass-drop:0_30px_80px_-30px_rgba(0,0,0,0.7)]">
               <form onSubmit={handleSubmit} className="space-y-5 relative">
                 {/* Honeypot field */}
                 <input
@@ -151,7 +153,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-[11px] font-mono tracking-wide text-text-primary/80 uppercase mb-2"
+                    className="block font-mono text-[11px] tracking-wide text-text-primary/80 uppercase mb-2"
                   >
                     Name
                   </label>
@@ -161,7 +163,7 @@ export default function ContactPage() {
                     type="text"
                     required
                     maxLength={100}
-                    className="w-full bg-white/4 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/6 focus:ring-4 focus:ring-accent-gold/10"
+                    className={inputStyles}
                     placeholder="Your name"
                   />
                 </div>
@@ -169,7 +171,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-[11px] font-mono tracking-wide text-text-primary/80 uppercase mb-2"
+                    className="block font-mono text-[11px] tracking-wide text-text-primary/80 uppercase mb-2"
                   >
                     Email
                   </label>
@@ -179,7 +181,7 @@ export default function ContactPage() {
                     type="email"
                     required
                     maxLength={200}
-                    className="w-full bg-white/4 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/6 focus:ring-4 focus:ring-accent-gold/10"
+                    className={inputStyles}
                     placeholder="you@example.com"
                   />
                 </div>
@@ -187,7 +189,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-[11px] font-mono tracking-wide text-text-primary/80 uppercase mb-2"
+                    className="block font-mono text-[11px] tracking-wide text-text-primary/80 uppercase mb-2"
                   >
                     Message
                   </label>
@@ -197,16 +199,20 @@ export default function ContactPage() {
                     required
                     rows={5}
                     maxLength={5000}
-                    className="w-full bg-white/4 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-text-primary placeholder:text-[#5b6b85] outline-none transition-all duration-200 focus:border-accent-gold/60 focus:bg-white/6 focus:ring-4 focus:ring-accent-gold/10 resize-none"
+                    className={`${inputStyles} resize-none`}
                     placeholder="What's on your mind?"
                   />
                 </div>
 
                 {status === "error" && (
-                  <p className="text-sm text-red-400">{errorMessage}</p>
+                  <p className="text-sm text-status-bad">{errorMessage}</p>
                 )}
 
-                <Button variant="solid" type="submit" disabled={status === "submitting"}>
+                <Button
+                  variant="solid"
+                  type="submit"
+                  disabled={status === "submitting"}
+                >
                   {status === "submitting" ? "Sending…" : "Send message"}
                 </Button>
               </form>
@@ -222,7 +228,7 @@ export default function ContactPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className="group glass flex flex-col items-center justify-center gap-2 rounded-2xl py-4 transition-all duration-200 hover:-translate-y-0.5"
+                className="group glass relative flex flex-col items-center justify-center gap-2 rounded-2xl py-4 transition-all duration-200 hover:-translate-y-0.5"
               >
                 <span
                   className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -232,15 +238,12 @@ export default function ContactPage() {
                 />
                 <svg
                   viewBox="0 0 24 24"
-                  className="h-5 w-5 relative z-10 fill-text-muted transition-colors duration-200"
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.fill = social.color)
-                  }
-                  onMouseLeave={(e) => (e.currentTarget.style.fill = "#94A3B8")}
+                  className="relative z-10 h-5 w-5 fill-text-muted transition-colors duration-200 group-hover:fill-(--social-color)"
+                  style={{ "--social-color": social.color } as React.CSSProperties}
                 >
                   {social.icon}
                 </svg>
-                <span className="relative z-10 text-[10px] font-mono tracking-wide text-[#5b6b85] group-hover:text-text-primary transition-colors duration-200">
+                <span className="relative z-10 font-mono text-[10px] tracking-wide text-text-muted group-hover:text-text-primary transition-colors duration-200">
                   {social.name}
                 </span>
               </a>

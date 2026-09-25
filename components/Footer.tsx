@@ -1,9 +1,6 @@
 import Link from "next/link";
 import Button from "./Button";
 
-// <PageShell footer={<Footer/>}>
-// <PageShell footer={<Footer variant="compact"/>}>
-
 type FooterVariant = "full" | "compact";
 
 interface FooterProps {
@@ -36,7 +33,7 @@ export default function Footer({ variant = "full" }: FooterProps) {
   if (variant === "compact") {
     return (
       <footer className="mt-auto py-6 text-center">
-        <p className="text-sm text-text-muted">
+        <p className="font-mono text-xs text-text-muted">
           © {year} Hasitha Amarasinghe
         </p>
       </footer>
@@ -44,16 +41,14 @@ export default function Footer({ variant = "full" }: FooterProps) {
   }
 
   return (
-    <footer className="glass mt-auto w-full border-t border-text-primary/6 py-12 md:py-16">
+    <footer className="w-full border-t border-border-color bg-bg-surface py-12 md:py-16">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:gap-8">
-
+          
           {/* Brand Column */}
           <div className="flex flex-col gap-2 max-w-md md:mr-8 lg:mr-32">
-
             <Link href="/" className="text-3xl font-semibold tracking-tight">
-              <span className="text-accent-gold">hasitha</span>
+              <span className="text-accent">hasitha</span>
               <span className="text-text-muted">.dev</span>
             </Link>
 
@@ -63,22 +58,26 @@ export default function Footer({ variant = "full" }: FooterProps) {
             </h2>
 
             <p className="text-sm leading-relaxed text-text-muted">
-              Building, deliberately.
+              Exploring Linux, DevOps, and automation.
             </p>
+            
             <div className="mt-4 inline-flex items-center flex-wrap gap-4">
-              <Button href="/contact">
-                Contact
-              </Button>
+              <Button href="/contact">Contact</Button>
             </div>
           </div>
 
           {/* Navigation Column */}
           <div className="md:flex-1">
-            <h3 className="mb-3 text-sm font-semibold tracking-widest text-text-primary/80">NAVIGATION</h3>
+            <h3 className="mb-3 font-mono text-xs tracking-widest text-text-muted">
+              NAVIGATION
+            </h3>
             <ul className="flex flex-col gap-1">
               {navigationLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-text-muted transition-colors hover:text-text-primary">
+                  <Link 
+                    href={link.href} 
+                    className="text-sm text-text-muted transition-colors hover:text-accent"
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -88,11 +87,16 @@ export default function Footer({ variant = "full" }: FooterProps) {
 
           {/* Legal & Policy Column */}
           <div className="md:flex-1">
-            <h3 className="mb-3 text-sm font-semibold tracking-widest text-text-primary/80">LEGAL & POLICY</h3>
+            <h3 className="mb-3 font-mono text-xs tracking-widest text-text-muted">
+              LEGAL
+            </h3>
             <ul className="flex flex-col gap-1">
               {legalLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-text-muted transition-colors hover:text-text-primary">
+                  <Link 
+                    href={link.href} 
+                    className="text-sm text-text-muted transition-colors hover:text-accent"
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -102,7 +106,9 @@ export default function Footer({ variant = "full" }: FooterProps) {
 
           {/* Connect Column */}
           <div className="md:flex-1">
-            <h3 className="mb-3 text-sm font-semibold tracking-widest text-text-primary/80">CONNECT</h3>
+            <h3 className="mb-3 font-mono text-xs tracking-widest text-text-muted">
+              CONNECT
+            </h3>
             <ul className="flex flex-col gap-1">
               {connectLinks.map((link) => (
                 <li key={link.href}>
@@ -110,7 +116,7 @@ export default function Footer({ variant = "full" }: FooterProps) {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-text-muted transition-colors hover:text-text-primary"
+                    className="text-sm text-text-muted transition-colors hover:text-accent"
                   >
                     {link.label}
                   </a>
@@ -121,12 +127,11 @@ export default function Footer({ variant = "full" }: FooterProps) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-5 flex flex-col items-center justify-center gap-4 border-t border-[#1E293B] pt-4 md:flex-row">
-          <p className="text-sm text-text-muted">
+        <div className="mt-12 flex flex-col items-center justify-center gap-4 border-t border-border-color pt-6 md:flex-row">
+          <p className="font-mono text-xs text-text-muted">
             © {year} Hasitha Amarasinghe
           </p>
         </div>
-
       </div>
     </footer>
   );
