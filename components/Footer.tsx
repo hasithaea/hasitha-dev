@@ -24,6 +24,7 @@ const connectLinks = [
   { label: "GitHub", href: "https://github.com/hasithaea" },
   { label: "X (Twitter)", href: "https://x.com/hasithaea" },
   { label: "Docker Hub", href: "https://hub.docker.com/u/hasithaea" },
+  { label: "Discord", href: "https://discord.com/users/hasithaea" },
 ];
 
 export default function Footer({ variant = "full" }: FooterProps) {
