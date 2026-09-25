@@ -55,7 +55,7 @@ export default function Header() {
         <nav aria-label="Main" className="glass rounded-full [--glass-drop:0_12px_32px_-12px_rgba(0,0,0,0.6)]">
           <div className="flex h-14 items-center justify-between px-6">
             <Link href="/" className="text-base font-semibold tracking-tight">
-              <span className="text-accent-gold">hasitha</span>
+              <span className="text-accent">hasitha</span>
               <span className="text-text-muted">.dev</span>
             </Link>
 
@@ -124,8 +124,8 @@ export default function Header() {
                   aria-current={homeActive ? "page" : undefined}
                   className={`block rounded-xl px-3 py-2.5 text-base ${
                     homeActive
-                      ? "bg-white/6 text-text-primary"
-                      : "text-text-muted hover:bg-white/6 hover:text-text-primary"
+                      ? "bg-white/5 text-text-primary"
+                      : "text-text-muted hover:bg-white/5 hover:text-text-primary"
                   }`}
                 >
                   Home
@@ -143,7 +143,7 @@ export default function Header() {
                 </a>
               </li>
             </ul>
-            <div className="mt-3 border-t border-white/10 pt-4">
+            <div className="mt-3 border-t border-border-color pt-4">
               <Button href="/contact" className="w-full justify-center">
                 Contact
               </Button>
