@@ -6,9 +6,33 @@ import Header from "@/components/Header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Hasitha Amarasinghe",
+  metadataBase: new URL("https://hasitha.dev"),
+  title: {
+    default: "Hasitha Amarasinghe",
+    template: "%s | Hasitha Amarasinghe",
+  },
   description:
-    "Personal portfolio of Hasitha Amarasinghe - a learner, building one project at a time.",
+    "Computer Science student exploring DevOps, Linux, and infrastructure. Building things and writing about what I learn.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://hasitha.dev",
+    siteName: "hasitha.dev",
+    title: "Hasitha Amarasinghe",
+    description:
+      "Computer Science student exploring DevOps, Linux, and infrastructure.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hasitha Amarasinghe",
+    description:
+      "Computer Science student exploring DevOps, Linux, and infrastructure.",
+    creator: "@hasithaea",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -19,17 +43,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
-        <Header/>
+        <Header />
         {children}
 
         <Analytics />
-
         <SpeedInsights />
 
         {process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
-        
       </body>
     </html>
   );
