@@ -2,15 +2,14 @@ import PageShell from "@/components/PageShell";
 import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 
-
 export default function PrivacyPolicyPage() {
   return (
-    <PageShell footer={<Footer/>}>
+    <PageShell footer={<Footer />}>
       <div className="mx-auto max-w-3xl px-6 py-24 text-text-muted">
         <h1 className="text-3xl font-semibold text-text-primary sm:text-4xl">
           Privacy Policy
         </h1>
-        <p className="mt-2 text-sm text-text-muted/70">
+        <p className="mt-2 font-mono text-xs tracking-wider text-text-muted/70 uppercase">
           Last updated: September 23, 2026
         </p>
 
@@ -197,11 +196,17 @@ export default function PrivacyPolicyPage() {
           <Section title="10. Contact">
             <p>
               If you have questions about this Privacy Policy or wish to
-              exercise your data rights, please contact:       
+              exercise your data rights, please contact:
             </p>
-            <Button variant="link" className="mt-4 font-bold" href="mailto:hello@hasitha.dev">
-              hello@hasitha.dev
-            </Button>
+            <div className="mt-4">
+              <Button
+                variant="link"
+                className="font-mono font-bold text-accent hover:text-accent-hover"
+                href="mailto:hello@hasitha.dev"
+              >
+                hello@hasitha.dev
+              </Button>
+            </div>
           </Section>
         </div>
       </div>
@@ -218,7 +223,9 @@ function Section({
 }) {
   return (
     <section>
-      <h2 className="text-xl font-semibold text-text-primary">{title}</h2>
+      <h2 className="text-xl font-semibold tracking-tight text-text-primary">
+        {title}
+      </h2>
       <div className="mt-3 space-y-3 text-sm leading-relaxed [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-5">
         {children}
       </div>
@@ -228,6 +235,8 @@ function Section({
 
 function SubHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="pt-2 text-sm font-medium text-text-primary/80">{children}</h3>
+    <h3 className="pt-2 font-mono text-base font-semibold text-text-primary">
+      {children}
+    </h3>
   );
 }
