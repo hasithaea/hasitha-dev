@@ -1,23 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #0B1220;
-  --grid-color: rgba(29, 78, 216, 0.30);
-  --grid-size: 56px;
-  --text-primary: #F8FAFC;
-  --text-muted: #94A3B8;
-  --accent-gold: #C9A24B;
-  --orb-color-1: #1D4ED8;
-  --orb-color-2: #1E40AF;
+  --bg-primary: #0D0D0D;
+  --bg-surface: #161616;
+  --border-color: #272727;
+  --text-primary: #E0E0E0;
+  --text-muted: #9CA3AF;
+  --accent: #FF6B35;
+  --accent-hover: #FF8557;
+  --status-good: #32D74B;
+  --status-bad: #F87171;
+  --slate: #4A5568;
 }
 
 @theme inline {
   --color-bg-primary: var(--bg-primary);
+  --color-bg-surface: var(--bg-surface);
+  --color-border-color: var(--border-color);
   --color-text-primary: var(--text-primary);
   --color-text-muted: var(--text-muted);
-  --color-accent-gold: var(--accent-gold);
-  --color-orb-color-1: var(--orb-color-1);
-  --color-orb-color-2: var(--orb-color-2);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-status-good: var(--status-good);
+  --color-status-bad: var(--status-bad);
+  --color-slate: var(--slate);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -25,7 +31,9 @@
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 /* Liquid glass */
