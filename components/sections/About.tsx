@@ -12,15 +12,15 @@ export default function About() {
           software development, systems, and DevOps.
         </p>
         <p>
-          I enjoy understanding how things work underneath the surface —
-          from programming and databases to Linux, containers, CI/CD
-          pipelines, cloud platforms, and cybersecurity.
+          I enjoy understanding how things work underneath the surface, 
+          from programming and databases to Linux, containers, and 
+          CI/CD pipelines. Lately that curiosity has extended into cloud
+          platforms and cybersecurity.
         </p>
         <p>
-          Most of the work here comes from coursework, hands-on learning,
-          and personal projects. I&apos;m particularly interested in the
-          engineering practices that turn code into software that can be
-          built, deployed, and maintained.
+          What draws me in most is the engineering practice behind the code, 
+          the tooling and discipline that let software be built, deployed, 
+          and maintained reliably.
         </p>
       </div>
 
