@@ -26,16 +26,16 @@ export default function About() {
 
       <dl className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-3 text-sm">
         <div>
-          <dt className="text-text-muted">Based in</dt>
-          <dd className="mt-1">Sri Lanka</dd>
+          <dt className="font-mono text-xs tracking-widest text-text-muted uppercase">Based in</dt>
+          <dd className="mt-1 text-text-primary">Sri Lanka</dd>
         </div>
         <div>
-          <dt className="text-text-muted">Studying</dt>
-          <dd className="mt-1">Bachelor of Computer Science</dd>
+          <dt className="font-mono text-xs tracking-widest text-text-muted uppercase">Studying</dt>
+          <dd className="mt-1 text-text-primary">Bachelor Computer Science</dd>
         </div>
         <div>
-          <dt className="text-text-muted">Focused on</dt>
-          <dd className="mt-1">DevOps, software &amp; infrastructure</dd>
+          <dt className="font-mono text-xs tracking-widest text-text-muted uppercase">Focused on</dt>
+          <dd className="mt-1 text-text-primary">DevOps &amp; infrastructure</dd>
         </div>
       </dl>
     </section>
