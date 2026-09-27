@@ -20,7 +20,7 @@ export const projects: Project[] = [
     summary:
       "A Node.js/Express app with a full GitHub Actions pipeline — build, test, and deploy stages running on every push.",
     stack: ["Node.js", "Express", "Docker", "GitHub Actions"],
-    repo: "https://github.com/hasithaea/DevOps-with-Docker-express-cicd",
+    repo: "https://github.com/hasithaea/DevOps-with-Docker/tree/main/express-ci-cd-demo",
     live: null,
   },
   {
