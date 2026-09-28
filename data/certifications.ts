@@ -5,6 +5,7 @@ export type Certification = {
   description: string;
   link: string | null;
   linkText: string | null;
+  featured: boolean;
 };
 
 export const certifications: Certification[] = [
@@ -16,6 +17,7 @@ export const certifications: Certification[] = [
       "Completed all three modules covering Docker Basics, Docker Compose, and Security & Optimization.",
     link: null,
     linkText: null,
+    featured: true,
   },
   {
     name: "Microsoft Azure Fundamentals & Cloud Engineering",
@@ -25,6 +27,7 @@ export const certifications: Certification[] = [
       "Additional learning focused on Microsoft Azure and cloud computing.",
     link: null,
     linkText: null,
+    featured: true,
   },
   {
     name: "Python for Beginners",
@@ -34,6 +37,7 @@ export const certifications: Certification[] = [
       "Foundational Python programming and problem-solving.",
     link: null,
     linkText: null,
+    featured: false,
   },
   {
     name: "ReactJS for Beginners",
@@ -43,6 +47,7 @@ export const certifications: Certification[] = [
       "Introductory learning in React.js and JavaScript.",
     link: null,
     linkText: null,
+    featured: false,
   },
   {
     name: "API Beginner Learning Path",
@@ -52,5 +57,6 @@ export const certifications: Certification[] = [
       "Foundational API concepts and API testing using Postman.",
     link: null,
     linkText: null,
+    featured: false,
   },
 ];
