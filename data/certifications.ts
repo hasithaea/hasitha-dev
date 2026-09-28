@@ -12,7 +12,7 @@ export const certifications: Certification[] = [
   {
     name: "DevOps with Docker",
     issuer: "University of Helsinki",
-    detail: "3 ECTS · Completed June 2026",
+    detail: "3 ECTS - Completed June 2026",
     description:
       "Completed all three modules covering Docker Basics, Docker Compose, and Security & Optimization.",
     link: null,
@@ -55,6 +55,16 @@ export const certifications: Certification[] = [
     detail: "Issued April 2026",
     description:
       "Foundational API concepts and API testing using Postman.",
+    link: null,
+    linkText: null,
+    featured: false,
+  },
+    {
+    name: "Capture The Flag (CTF) – Introduction to Cybersecurity",
+    issuer: "VULNHAT",
+    detail: "Issued June 2026",
+    description:
+      "Introductory cybersecurity and CTF workshop organized by the Computer Science Students' Community (CSSC), University of Ruhuna, in collaboration with VULNHAT (Pvt) Ltd.",
     link: null,
     linkText: null,
     featured: false,
