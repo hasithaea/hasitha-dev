@@ -18,10 +18,10 @@ export const projects: Project[] = [
   {
     title: "Express CI/CD Demo",
     summary:
-      "A Node.js/Express app with a full GitHub Actions pipeline — build, test, and deploy stages running on every push.",
-    stack: ["Node.js", "Express", "Docker", "GitHub Actions"],
+      "Dockerized a Node.js/Express app and built the pipeline around it. Every push to main builds the image, pushes it to Docker Hub, and triggers a redeploy on Render.",
+    stack: ["Docker", "GitHub Actions", "Docker Hub", "Render", "Node.js"],
     repo: "https://github.com/hasithaea/DevOps-with-Docker/tree/main/express-ci-cd-demo",
-    live: null,
+    live: "https://ci-cd-demo-of6g.onrender.com",
   },
   {
     title: "Majesty",
