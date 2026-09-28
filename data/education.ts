@@ -1,6 +1,6 @@
 export type Coursework = {
   name: string;
-  repo: string;
+  repo: string | null;
 };
 
 export type Education = {
@@ -21,16 +21,32 @@ export const education: Education[] = [
       "Building a foundation across programming, computer systems, databases, algorithms, software engineering, web development, and related areas of computer science.",
     coursework: [
       {
-        name: "C & Data Structures",
+        name: "Data Structures and Algorithms",
         repo: "https://github.com/hasithaea/C-DSA-assignments",
       },
       {
-        name: "Object-Oriented Programming with Java",
+        name: "Object Oriented Programming",
         repo: "https://github.com/hasithaea/oop-with-java",
       },
       {
-        name: "DevOps with Docker",
-        repo: "https://github.com/hasithaea/DevOps-with-Docker",
+        name: "Database Management Systems",
+        repo: "https://github.com/hasithaea/sql-learning",
+      },
+      {
+        name: "MATLAB",
+        repo: "https://github.com/hasithaea/matlab-learning",
+      },
+      { 
+        name: "Operating Systems",
+        repo: null,
+      },
+      { 
+        name: "Data Communication & Computer Networks",
+        repo: null,
+      },
+      { 
+        name: "Software Engineering",
+        repo: null 
       },
     ],
     logo: "/logos/ruhuna.svg",
