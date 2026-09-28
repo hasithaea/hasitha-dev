@@ -6,9 +6,9 @@ export default function EducationItem({ item }: { item: Education }) {
     <article className="border-l border-border-color pl-5">
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
         <div>
-          <h4 className="font-semibold tracking-tight">
+          <h3 className="font-semibold tracking-tight">
             {item.qualification}
-          </h4>
+          </h3>
           <p className="mt-1 text-sm text-text-muted">{item.institution}</p>
         </div>
 
