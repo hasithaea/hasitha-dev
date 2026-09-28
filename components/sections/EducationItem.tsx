@@ -1,4 +1,5 @@
 import type { Education } from "@/data/education";
+import { FaGithub } from "react-icons/fa6";
 
 export default function EducationItem({ item }: { item: Education }) {
   return (
@@ -31,17 +32,27 @@ export default function EducationItem({ item }: { item: Education }) {
           </p>
 
           <div className="flex flex-wrap gap-2">
-            {item.coursework.map((course) => (
+            {item.coursework.map((course) =>
+              course.repo ? (
                 <a
-                    key={course.name}
-                    href={course.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-md border border-border-color bg-bg-surface px-3 py-1.5 font-mono text-xs text-text-muted hover:border-accent/40 hover:text-text-primary transition-colors"
+                  key={course.name}
+                  href={course.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-md border border-border-color bg-bg-surface px-3 py-1.5 font-mono text-xs text-text-muted hover:border-accent/40 hover:text-text-primary transition-colors"
                 >
-                {course.name}
-              </a>
-            ))}
+                  <FaGithub className="h-3.5 w-3.5" aria-hidden="true" />
+                  {course.name}
+                </a>
+              ) : (
+                <span
+                  key={course.name}
+                  className="rounded-md border border-border-color px-3 py-1.5 font-mono text-xs text-text-muted"
+                >
+                  {course.name}
+                </span>
+              )
+            )}
           </div>
         </div>
       )}
