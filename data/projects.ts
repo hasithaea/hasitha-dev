@@ -31,4 +31,12 @@ export const projects: Project[] = [
     repo: "https://github.com/hasithaea/Majesty_project",
     live: null,
   },
+  {
+    title: "80% Attendance Tracker",
+    summary:
+      "A mobile app UI design that helps students track attendance and predict how many classes they can miss while staying above 80%. Built in under 2 hours for a UI/UX poster challenge.",
+    stack: ["Figma", "Canva"],
+    repo: "https://github.com/hasithaea/80-attendance-tracker-ui",
+    live: null,
+  },
 ];
