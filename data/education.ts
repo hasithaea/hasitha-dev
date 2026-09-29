@@ -6,6 +6,7 @@ export type Coursework = {
 export type Education = {
   institution: string;
   qualification: string;
+  institutionUrl?: string;
   period: string;
   description: string | null;
   coursework: Coursework[];
@@ -14,7 +15,8 @@ export type Education = {
 
 export const education: Education[] = [
   {
-    institution: "University of Ruhuna",
+    institution: "Department of Computer Science, University of Ruhuna",
+    institutionUrl: "https://sci.ruh.ac.lk/department/DCS/5", 
     qualification: "Bachelor of Computer Science",
     period: "Sep 2025 – Present",
     description:
@@ -53,6 +55,7 @@ export const education: Education[] = [
   },
   {
     institution: "Ranabima Royal College, Peradeniya",
+    institutionUrl: "https://ranabimaroyal.lk/",
     qualification: "Secondary Education",
     period: "2016 – 2024",
     description: null,

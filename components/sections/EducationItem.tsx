@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
 import type { Education } from "@/data/education";
+import Button from "../Button";
 
 export default function EducationItem({ item }: { item: Education }) {
   return (
@@ -24,7 +25,18 @@ export default function EducationItem({ item }: { item: Education }) {
               <h3 className="font-semibold tracking-tight">
                 {item.qualification}
               </h3>
-              <p className="mt-1 text-sm text-text-muted">{item.institution}</p>
+              <p className="mt-1 text-sm text-text-muted">
+                {item.institutionUrl ? (
+                  <Button
+                    variant="link"
+                    href={item.institutionUrl}
+                  >
+                    {item.institution}  
+                  </Button>
+                ) : (
+                  item.institution
+                )}
+              </p>
             </div>
 
             {item.period && (
