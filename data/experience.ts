@@ -5,6 +5,7 @@ export type Experience = {
     location: string;
     description: string;
     points: string[];
+    logo?: string;
 };
 
 export const experience: Experience[] = [
@@ -20,5 +21,6 @@ export const experience: Experience[] = [
       "Gained exposure to account and transaction records in a live banking environment",
       "Developed attention to detail, customer interaction, and problem-solving skills",
     ],
+    logo: "/logos/peoples-bank.svg",
   },
 ];
