@@ -1,6 +1,7 @@
 export type Experience = {
     role: string;
     company: string;
+    companyUrl?: string;
     period: string;
     location: string;
     description: string;
@@ -12,6 +13,7 @@ export const experience: Experience[] = [
   {
     role: "Internship Trainee",
     company: "People's Bank Sri Lanka",
+    companyUrl: "https://www.peoplesbank.lk/",
     period: "Sep 2024 – Mar 2025",
     location: "Kandy, Sri Lanka",
     description:

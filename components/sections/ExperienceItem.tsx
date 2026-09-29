@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Button from "../Button";
 import type { Experience } from "@/data/experience";
 
 export default function ExperienceItem({ item }: { item: Experience }) {
@@ -20,8 +21,21 @@ export default function ExperienceItem({ item }: { item: Experience }) {
         <div className="flex-1">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
             <div>
-              <h3 className="font-semibold tracking-tight">{item.role}</h3>
-              <p className="mt-1 text-sm text-text-muted">{item.company}</p>
+              <h3 className="font-semibold tracking-tight">
+                {item.role}
+              </h3>
+              <p className="mt-1 text-sm text-text-muted">
+                {item.companyUrl ? (
+                  <Button
+                    variant="link"
+                    href={item.companyUrl}
+                  >
+                    {item.company}
+                  </Button>
+                ) : (
+                  item.company
+                )}
+              </p>
             </div>
 
             <div className="font-mono text-xs text-text-muted sm:text-right">
