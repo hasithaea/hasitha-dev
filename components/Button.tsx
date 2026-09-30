@@ -37,8 +37,8 @@ export default function Button({
     );
   }
 
-  // Internal routes use next/link;
-  if (href.startsWith("/")) {
+  // Internal routes anchors use next/link;
+  if (href.startsWith("/") || href.startsWith("#")) {
     return (
       <Link href={href} className={cls}>
         {children}

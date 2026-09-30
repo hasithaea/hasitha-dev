@@ -4,7 +4,8 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Projects from "@/components/sections/Projects";
 import Experience from "@/components/sections/Experience";
-import EducationAndCerts from "@/components/sections/EducationAndCerts";
+import Education from "@/components/sections/Education";
+import Certifications from "@/components/sections/Certifications";
 import Skills from "@/components/sections/Skills";
 import ContactCTA from "@/components/sections/ContactCTA";
 
@@ -15,7 +16,8 @@ export default function Home() {
       <About />
       <Projects />
       <Experience />
-      <EducationAndCerts />
+      <Education />
+      <Certifications />
       <Skills />
       <ContactCTA />
     </PageShell>

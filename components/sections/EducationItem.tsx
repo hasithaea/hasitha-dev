@@ -1,50 +1,90 @@
+import Image from "next/image";
+import { FaGithub } from "react-icons/fa6";
 import type { Education } from "@/data/education";
+import Button from "../Button";
 
 export default function EducationItem({ item }: { item: Education }) {
   return (
     <article className="border-l border-border-color pl-5">
-      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-        <div>
-          <h4 className="font-semibold tracking-tight">
-            {item.qualification}
-          </h4>
-          <p className="mt-1 text-sm text-text-muted">{item.institution}</p>
-        </div>
-
-        {item.period && (
-          <span className="font-mono text-xs text-text-muted">
-            {item.period}
-          </span>
+      <div className="flex items-start gap-4">
+        {item.logo && (
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md overflow-hidden">
+            <Image
+              src={item.logo}
+              alt={`${item.institution} logo`}
+              width={80}
+              height={80}
+              className="h-full w-full object-contain grayscale opacity-80"
+            />
+          </div>
         )}
-      </div>
 
-      {item.description && (
-        <p className="mt-3 max-w-2xl text-sm text-text-muted leading-relaxed">
-          {item.description}
-        </p>
-      )}
+        <div className="flex-1">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+            <div>
+              <h3 className="font-semibold tracking-tight">
+                {item.qualification}
+              </h3>
+              <p className="mt-1 text-sm text-text-muted">
+                {item.institutionUrl ? (
+                  <Button
+                    variant="link"
+                    href={item.institutionUrl}
+                  >
+                    {item.institution}  
+                  </Button>
+                ) : (
+                  item.institution
+                )}
+              </p>
+            </div>
 
-      {item.coursework.length > 0 && (
-        <div className="mt-4">
+            {item.period && (
+              <span className="font-mono text-xs text-text-muted">
+                {item.period}
+              </span>
+            )}
+          </div>
+
+          {item.description && (
+            <p className="mt-3 max-w-2xl text-sm text-text-muted leading-relaxed">
+              {item.description}
+            </p>
+          )}
+
+          {item.coursework.length > 0 && (
+            <div className="mt-4">
           <p className="font-mono text-xs text-text-muted uppercase tracking-widest mb-2">
             Selected coursework
           </p>
 
-          <div className="flex flex-wrap gap-2">
-            {item.coursework.map((course) => (
-                <a
-                    key={course.name}
-                    href={course.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-md border border-border-color bg-bg-surface px-3 py-1.5 font-mono text-xs text-text-muted hover:border-accent/40 hover:text-text-primary transition-colors"
-                >
-                {course.name}
-              </a>
-            ))}
-          </div>
+              <div className="flex flex-wrap gap-2">
+                {item.coursework.map((course) =>
+                  course.repo ? (
+                    <a
+                      key={course.name}
+                      href={course.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-md border border-border-color bg-bg-surface px-3 py-1.5 font-mono text-xs text-text-muted hover:border-accent/40 hover:text-text-primary transition-colors"
+                    >
+                      <FaGithub className="h-3.5 w-3.5" aria-hidden="true" />
+                      {course.name}
+                    </a>
+                  ) : (
+                    <span
+                      key={course.name}
+                      className="rounded-md border border-border-color px-3 py-1.5 font-mono text-xs text-text-muted"
+                    >
+                      {course.name}
+                    </span>
+                  )
+                )}
+              </div>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </article>
   );
 }

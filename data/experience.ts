@@ -1,16 +1,19 @@
 export type Experience = {
     role: string;
     company: string;
+    companyUrl?: string;
     period: string;
     location: string;
     description: string;
     points: string[];
+    logo?: string;
 };
 
 export const experience: Experience[] = [
   {
     role: "Internship Trainee",
     company: "People's Bank Sri Lanka",
+    companyUrl: "https://www.peoplesbank.lk/",
     period: "Sep 2024 – Mar 2025",
     location: "Kandy, Sri Lanka",
     description:
@@ -20,5 +23,6 @@ export const experience: Experience[] = [
       "Gained exposure to account and transaction records in a live banking environment",
       "Developed attention to detail, customer interaction, and problem-solving skills",
     ],
+    logo: "/logos/peoples-bank.svg",
   },
 ];

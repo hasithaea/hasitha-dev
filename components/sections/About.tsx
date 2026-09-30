@@ -12,30 +12,30 @@ export default function About() {
           software development, systems, and DevOps.
         </p>
         <p>
-          I enjoy understanding how things work underneath the surface —
-          from programming and databases to Linux, containers, CI/CD
-          pipelines, cloud platforms, and cybersecurity.
+          I enjoy understanding how things work underneath the surface, 
+          from programming and databases to Linux, containers, and 
+          CI/CD pipelines. Lately that curiosity has extended into cloud
+          platforms and cybersecurity.
         </p>
         <p>
-          Most of the work here comes from coursework, hands-on learning,
-          and personal projects. I&apos;m particularly interested in the
-          engineering practices that turn code into software that can be
-          built, deployed, and maintained.
+          What draws me in most is the engineering practice behind the code, 
+          the tooling and discipline that let software be built, deployed, 
+          and maintained reliably.
         </p>
       </div>
 
       <dl className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-3 text-sm">
         <div>
-          <dt className="text-text-muted">Based in</dt>
-          <dd className="mt-1">Sri Lanka</dd>
+          <dt className="font-mono text-xs tracking-widest text-text-muted uppercase">Based in</dt>
+          <dd className="mt-1 text-text-primary">Sri Lanka</dd>
         </div>
         <div>
-          <dt className="text-text-muted">Studying</dt>
-          <dd className="mt-1">Bachelor of Computer Science</dd>
+          <dt className="font-mono text-xs tracking-widest text-text-muted uppercase">Studying</dt>
+          <dd className="mt-1 text-text-primary">Bachelor Computer Science</dd>
         </div>
         <div>
-          <dt className="text-text-muted">Focused on</dt>
-          <dd className="mt-1">DevOps, software &amp; infrastructure</dd>
+          <dt className="font-mono text-xs tracking-widest text-text-muted uppercase">Focused on</dt>
+          <dd className="mt-1 text-text-primary">DevOps &amp; infrastructure</dd>
         </div>
       </dl>
     </section>
