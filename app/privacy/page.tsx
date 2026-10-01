@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
 import Button from "@/components/Button";
 import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "How hasitha.dev collects, uses, and protects your information.",
+};
 
 export default function PrivacyPolicyPage() {
   return (
