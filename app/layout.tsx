@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { SITE_URL, SITE_NAME, TWITTER_HANDLE } from "@/lib/site";
 import Header from "@/components/Header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hasitha.dev"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Hasitha Amarasinghe",
     template: "%s | Hasitha Amarasinghe",
@@ -16,8 +17,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://hasitha.dev",
-    siteName: "hasitha.dev",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     title: "Hasitha Amarasinghe",
     description:
       "Computer Science student exploring DevOps, Linux, and infrastructure.",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     title: "Hasitha Amarasinghe",
     description:
       "Computer Science student exploring DevOps, Linux, and infrastructure.",
-    creator: "@hasithaea",
+    creator: TWITTER_HANDLE,
   },
   robots: {
     index: true,
