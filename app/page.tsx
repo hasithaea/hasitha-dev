@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
 import Footer from "@/components/Footer";
 import Hero from "@/components/sections/Hero";
@@ -8,6 +9,11 @@ import Education from "@/components/sections/Education";
 import Certifications from "@/components/sections/Certifications";
 import Skills from "@/components/sections/Skills";
 import ContactCTA from "@/components/sections/ContactCTA";
+
+export const metadata: Metadata = {
+  description:
+    "Portfolio of Hasitha Amarasinghe - CS undergraduate at the University of Ruhuna exploring DevOps, Linux, and infrastructure.",
+};
 
 export default function Home() {
   return (
