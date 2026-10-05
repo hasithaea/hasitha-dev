@@ -97,7 +97,6 @@ export default function ProjectRow({
 
           {stats && (
             <p className="font-mono text-xs text-text-muted">
-              {stats.language ? `${stats.language} · ` : ""}
               Last push <RelativeTime iso={stats.pushedAt} mode="push" />
             </p>
           )}
