@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import ScreenshotGallery from "@/components/ScreenshotGallery";
 import { notFound } from "next/navigation";
 import { FaGithub } from "react-icons/fa6";
 import PageShell from "@/components/PageShell";
@@ -130,28 +130,8 @@ export default async function ProjectDetailPage({ params }: Props) {
                     Screenshots
                   </h2>
                 </div>
-                <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                  {gallery.map((shot) => (
-                    <figure key={shot.src}>
-                      <a
-                        href={shot.src}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="relative block aspect-video overflow-hidden rounded-lg border border-border-color transition-colors hover:border-accent/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-                      >
-                        <Image
-                          src={shot.src}
-                          alt={shot.caption}
-                          fill
-                          sizes="(min-width: 640px) 280px, 100vw"
-                          className="object-cover"
-                        />
-                      </a>
-                      <figcaption className="mt-2 text-xs text-text-muted">
-                        {shot.caption}
-                      </figcaption>
-                    </figure>
-                  ))}
+                <div className="mt-5">
+                  <ScreenshotGallery shots={gallery} />
                 </div>
               </section>
             )}
