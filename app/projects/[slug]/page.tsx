@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { FaGithub } from "react-icons/fa6";
 import PageShell from "@/components/PageShell";
 import Footer from "@/components/Footer";
-import Button from "@/components/Button";
 import RelativeTime from "@/components/RelativeTime";
 import ProjectImage from "@/components/sections/ProjectImage";
 import { projects } from "@/data/projects";
@@ -75,9 +74,6 @@ export default async function ProjectDetailPage({ params }: Props) {
   return (
     <PageShell footer={<Footer />}>
       <article className="pb-24 pt-28">
-        <Button variant="pill" href="/projects">
-          ← All projects
-        </Button>
 
         <header className="mt-8">
           <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
