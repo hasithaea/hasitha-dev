@@ -10,9 +10,9 @@ export async function getSiteStatus(url: string): Promise<SiteCheck> {
   try {
     const res = await fetch(url, {
       method: "HEAD",
-      signal: AbortSignal.timeout(8000),
+      signal: AbortSignal.timeout(15000),
     });
-    status = res.status < 500 ? "up" : "down";
+    status = res.ok ? "up" : res.status < 500 ? "unknown" : "down";
   } catch {
     status = "unknown";
   }
