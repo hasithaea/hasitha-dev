@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaGithub } from "react-icons/fa6";
 import type { Project } from "@/data/projects";
 import type { RepoStats } from "@/lib/github";
 import type { SiteCheck, SiteStatus } from "@/lib/site-status";
@@ -31,6 +32,7 @@ export default function ProjectRow({
         <ProjectImage
           title={project.title}
           src={project.image}
+          fit={project.imageFit}
           sizes="(min-width: 768px) 288px, 100vw"
         />
       </div>
@@ -79,8 +81,9 @@ export default function ProjectRow({
               href={project.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className={linkCls}
+              className={`${linkCls} inline-flex items-center gap-1.5`}
             >
+              <FaGithub className="h-4 w-4" aria-hidden />
               Source
             </a>
             {project.live && (
@@ -97,6 +100,7 @@ export default function ProjectRow({
 
           {stats && (
             <p className="font-mono text-xs text-text-muted">
+              {stats.language ? `${stats.language} · ` : ""}
               Last push <RelativeTime iso={stats.pushedAt} mode="push" />
             </p>
           )}
