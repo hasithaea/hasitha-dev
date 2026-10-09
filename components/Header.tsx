@@ -9,6 +9,11 @@ import Button from "@/components/Button";
 const SHOW_ABOVE = 80; // always visible near the top of the page
 const DELTA = 6; // ignore tiny scroll
 
+const NAV_ITEMS = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+] as const;
+
 export default function Header() {
   const pathname = usePathname();
   const [hidden, setHidden] = useState(false);
@@ -29,8 +34,8 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-// Menu remember where it was opened.
-// Navigating to another page closes it automatically.
+  // Menu remembers where it was opened.
+  // Navigating to another page closes it automatically.
   const [openAt, setOpenAt] = useState<string | null>(null);
   const open = openAt === pathname;
   const toggle = () => setOpenAt(open ? null : pathname);
@@ -42,7 +47,8 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const homeActive = pathname === "/";
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header
@@ -52,7 +58,10 @@ export default function Header() {
       }`}
     >
       <div className="w-full max-w-3xl">
-        <nav aria-label="Main" className="glass rounded-full [--glass-drop:0_12px_32px_-12px_rgba(0,0,0,0.6)]">
+        <nav
+          aria-label="Main"
+          className="glass rounded-full [--glass-drop:0_12px_32px_-12px_rgba(0,0,0,0.6)]"
+        >
           <div className="flex h-14 items-center justify-between px-6">
             <Link href="/" className="text-base font-semibold tracking-tight">
               <span className="text-accent">hasitha</span>
@@ -61,17 +70,24 @@ export default function Header() {
 
             {/* desktop */}
             <div className="hidden items-center gap-6 md:flex">
-              <Link
-                href="/"
-                aria-current={homeActive ? "page" : undefined}
-                className={`text-sm transition-colors duration-200 ${
-                  homeActive
-                    ? "text-text-primary"
-                    : "text-text-muted hover:text-text-primary"
-                }`}
-              >
-                Home
-              </Link>
+              {NAV_ITEMS.map((item) => {
+                const active = isActive(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`text-sm transition-colors duration-200 ${
+                      active
+                        ? "text-text-primary"
+                        : "text-text-muted hover:text-text-primary"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+
               <a
                 href="https://github.com/hasithaea"
                 target="_blank"
@@ -81,6 +97,7 @@ export default function Header() {
               >
                 <FaGithub className="h-5 w-5" />
               </a>
+
               <Button href="/contact">Contact</Button>
             </div>
 
@@ -118,25 +135,30 @@ export default function Header() {
             className="glass mt-2 rounded-3xl px-4 py-4 md:hidden [--glass-drop:0_12px_32px_-12px_rgba(0,0,0,0.6)]"
           >
             <ul className="space-y-1">
-              <li>
-                <Link
-                  href="/"
-                  aria-current={homeActive ? "page" : undefined}
-                  className={`block rounded-xl px-3 py-2.5 text-base ${
-                    homeActive
-                      ? "bg-white/5 text-text-primary"
-                      : "text-text-muted hover:bg-white/5 hover:text-text-primary"
-                  }`}
-                >
-                  Home
-                </Link>
-              </li>
+              {NAV_ITEMS.map((item) => {
+                const active = isActive(item.href);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={active ? "page" : undefined}
+                      className={`block rounded-xl px-3 py-2.5 text-base ${
+                        active
+                          ? "bg-white/5 text-text-primary"
+                          : "text-text-muted hover:bg-white/5 hover:text-text-primary"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
               <li>
                 <a
                   href="https://github.com/hasithaea"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-base text-text-muted hover:bg-white/6 hover:text-text-primary"
+                  className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-base text-text-muted hover:bg-white/5 hover:text-text-primary"
                 >
                   <FaGithub className="h-5 w-5" />
                   GitHub

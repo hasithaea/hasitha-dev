@@ -1,10 +1,25 @@
+import Link from "next/link";
+import { FaGithub } from "react-icons/fa6";
 import type { Project } from "@/data/projects";
+
+const linkCls =
+  "relative z-10 text-accent hover:text-accent-hover transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent rounded-sm";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="rounded-lg border border-border-color bg-bg-surface p-5 transition-colors duration-300 hover:border-accent/40">
+    <article className="relative rounded-lg border border-border-color bg-bg-surface p-5 transition-colors duration-300 hover:border-accent/40">
       <h3 className="text-base font-semibold tracking-tight">
-        {project.title}
+        {project.detail ? (
+          // The whole card is clickable
+          <Link
+            href={`/projects/${project.slug}`}
+            className="after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent rounded-sm"
+          >
+            {project.title}
+          </Link>
+        ) : (
+          project.title
+        )}
       </h3>
 
       <p className="mt-2 text-sm text-text-muted leading-relaxed">
@@ -27,20 +42,21 @@ export default function ProjectCard({ project }: { project: Project }) {
           href={project.repo}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-accent hover:text-accent-hover transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent rounded-sm"
+          className={`${linkCls} inline-flex items-center gap-1.5`}
         >
+          <FaGithub className="h-4 w-4" aria-hidden />
           Source
         </a>
 
         {project.live && (
-            <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent hover:text-accent-hover transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent rounded-sm"
-            >
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkCls}
+          >
             Live site
-            </a>
+          </a>
         )}
       </div>
     </article>
