@@ -3,12 +3,12 @@ const API = "https://api.github.com";
 export type CiState = "passing" | "failing" | "unknown";
 
 export type RepoStats = {
-  pushedAt: string;
+  pushedAt: string; // folder URLs - the latest commit touched folder
   language: string | null;
   ci: CiState;
-  commits: number | null;
+  commits: number | null; // folder URLs - commits touched folder
 };
-
+ 
 function parseRepo(url: string): { repo: string; path: string | null } | null {
   const m = url.match(/github\.com\/([^/]+)\/([^/#?]+)/);
   if (!m) return null;
@@ -19,49 +19,24 @@ function parseRepo(url: string): { repo: string; path: string | null } | null {
   };
 }
 
+function ghFetch(path: string) {
+  return fetch(`${API}${path}`, {
+    headers: {
+      Accept: "application/vnd.github+json",
+      ...(process.env.GITHUB_TOKEN && {
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      }),
+    },
+    next: { revalidate: 3600 },
+  });
+}
+
 async function gh<T>(path: string): Promise<T | null> {
   try {
-    const res = await fetch(`${API}${path}`, {
-      headers: {
-        Accept: "application/vnd.github+json",
-        ...(process.env.GITHUB_TOKEN && {
-          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        }),
-      },
-      next: { revalidate: 3600 },
-    });
+    const res = await ghFetch(path);
     return res.ok ? ((await res.json()) as T) : null;
   } catch {
     return null;
-  }
-}
-
-
-async function ghWithTotal<T>(
-  path: string,
-): Promise<{ data: T | null; total: number | null }> {
-  try {
-    const res = await fetch(`${API}${path}`, {
-      headers: {
-        Accept: "application/vnd.github+json",
-        ...(process.env.GITHUB_TOKEN && {
-          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        }),
-      },
-      next: { revalidate: 3600 },
-    });
-    if (!res.ok) return { data: null, total: null };
-    const data = (await res.json()) as T;
-
-    const link = res.headers.get("Link");
-    if (link) {
-      const m = link.match(/&page=(\d+)>; rel="last"/);
-      if (m) return { data, total: parseInt(m[1], 10) };
-    }
-    // No Link header = only one page = count is array length
-    return { data, total: Array.isArray(data) ? data.length : null };
-  } catch {
-    return { data: null, total: null };
   }
 }
 
@@ -72,21 +47,41 @@ type Commit = {
   };
 };
 
+async function getCommits(
+  repo: string,
+  path: string | null,
+): Promise<{ count: number; lastDate: string | null } | null> {
+  try {
+    const qs = path ? `&path=${encodeURIComponent(path)}` : "";
+    const res = await ghFetch(`/repos/${repo}/commits?per_page=1${qs}`);
+    if (!res.ok) return null;
+
+    const body = (await res.json()) as Commit[];
+    const last = res.headers
+      .get("link")
+      ?.match(/[?&]page=(\d+)[^>]*>;\s*rel="last"/);
+    const first = body[0]?.commit;
+
+    return {
+      count: last ? Number(last[1]) : body.length,
+      lastDate: first?.committer?.date ?? first?.author?.date ?? null,
+    };
+  } catch {
+    return null;
+  }
+}
+
 export async function getRepoStats(repoUrl: string): Promise<RepoStats | null> {
   const parsed = parseRepo(repoUrl);
   if (!parsed) return null;
   const { repo, path } = parsed;
 
-  const commitsPath = path
-    ? `/repos/${repo}/commits?path=${encodeURIComponent(path)}&per_page=1`
-    : `/repos/${repo}/commits?per_page=1`;
-
-  const [info, runs, commitsResult] = await Promise.all([
+  const [info, runs, commits] = await Promise.all([
     gh<{ pushed_at: string; language: string | null }>(`/repos/${repo}`),
     gh<{ workflow_runs: { conclusion: string | null }[] }>(
       `/repos/${repo}/actions/runs?status=completed&per_page=1`,
     ),
-    ghWithTotal<Commit[]>(commitsPath),
+    getCommits(repo, path),
   ]);
 
   if (!info) return null;
@@ -99,14 +94,10 @@ export async function getRepoStats(repoUrl: string): Promise<RepoStats | null> {
         ? "failing"
         : "unknown";
 
-  const commits = commitsResult.data;
-  const folderDate =
-    commits?.[0]?.commit.committer?.date ?? commits?.[0]?.commit.author?.date;
-
   return {
-    pushedAt: folderDate ?? info.pushed_at,
+    pushedAt: (path ? commits?.lastDate : null) ?? info.pushed_at,
     language: info.language,
     ci,
-    commits: commitsResult.total,
+    commits: commits?.count ?? null,
   };
 }
