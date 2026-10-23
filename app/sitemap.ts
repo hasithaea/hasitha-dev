@@ -24,6 +24,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...projectPages,
     {
+      url: `${SITE_URL}/certifications`,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
       url: `${SITE_URL}/contact`,
       changeFrequency: "yearly",
       priority: 0.5,

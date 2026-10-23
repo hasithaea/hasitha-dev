@@ -1,5 +1,6 @@
 import SectionHeading from "@/components/SectionHeading";
 import CertificationCard from "@/components/sections/CertificationCard";
+import Button from "../Button";
 import { certifications } from "@/data/certifications";
 
 export default function Certifications() {
@@ -13,6 +14,11 @@ export default function Certifications() {
         {featured.map((certification) => (
           <CertificationCard key={certification.name} certification={certification} />
         ))}
+      </div>
+      <div className="mt-4 sm:text-right">
+        <Button href="/certifications" variant="link">
+          View all certifications
+        </Button>
       </div>
     </section>
   );

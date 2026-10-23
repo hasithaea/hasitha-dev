@@ -3,8 +3,8 @@ export type Certification = {
   issuer: string;
   detail: string;
   description: string;
-  link: string | null;
-  linkText: string | null;
+  links: { label: string; url: string }[] | null;
+  images: { src: string; caption: string }[] | null;
   featured: boolean;
 };
 
@@ -12,11 +12,19 @@ export const certifications: Certification[] = [
   {
     name: "DevOps with Docker",
     issuer: "University of Helsinki",
-    detail: "3 ECTS - Completed June 2026",
+    detail: "Completed June 2026",
     description:
-      "Completed all three modules covering Docker Basics, Docker Compose, and Security & Optimization.",
-    link: null,
-    linkText: null,
+      "Completed all three modules covering Docker Basics, Docker Compose, and Security & Optimization. 3 ECTS.",
+    links: [
+      { label: "Verify Basics", url: "https://courses.mooc.fi/certificates/validate/qr67fa7ar2pjwtq" },
+      { label: "Verify Compose", url: "https://courses.mooc.fi/certificates/validate/9qn83kjkhpkeatv" },
+      { label: "Verify Security", url: "https://courses.mooc.fi/certificates/validate/7z25595n325qzbf" },
+    ],
+    images: [
+      { src: "/certificates/Docker-Basics.png", caption: "Docker Basics" },
+      { src: "/certificates/Docker-compose.png", caption: "Docker Compose" },
+      { src: "/certificates/Security-and-optimization.png", caption: "Security and Optimization" },
+    ],
     featured: true,
   },
   {
@@ -24,9 +32,13 @@ export const certifications: Certification[] = [
     issuer: "NextGen Campus",
     detail: "Issued April 2026",
     description:
-      "Additional learning focused on Microsoft Azure and cloud computing.",
-    link: null,
-    linkText: null,
+      "Hands on workshop focused on Microsoft Azure and cloud computing.",
+    links: [
+      { label: "Verify", url:"https://verify.nextgencampus.lk" },
+    ],
+    images: [
+      { src: "/certificates/Microsoft-Azure-Fundamentals.png", caption:"Certificate of completion"},
+    ],
     featured: true,
   },
   {
@@ -34,9 +46,13 @@ export const certifications: Certification[] = [
     issuer: "University of Moratuwa",
     detail: "Issued April 2026",
     description:
-      "Foundational Python programming and problem-solving.",
-    link: null,
-    linkText: null,
+      "Foundational Python programming and problem solving.",
+    links: [
+      { label:"Verify", url: "https://open.uom.lk/lms/mod/customcert/verify_certificate.php"},
+    ],
+    images: [
+      { src: "/certificates/Python-for-Beginners.png", caption: "Certificate of completion"},
+    ],
     featured: false,
   },
   {
@@ -45,8 +61,12 @@ export const certifications: Certification[] = [
     detail: "Issued May 2026",
     description:
       "Introductory learning in React.js and JavaScript.",
-    link: null,
-    linkText: null,
+    links: [
+      { label:"Verify", url: "https://simpli-web.app.link/e/zj42XLc2W2b"},
+    ],
+    images: [
+      { src: "/certificates/ReactJS-for-Beginners.png", caption:"Certificate of completion"},
+    ],
     featured: false,
   },
   {
@@ -55,18 +75,24 @@ export const certifications: Certification[] = [
     detail: "Issued April 2026",
     description:
       "Foundational API concepts and API testing using Postman.",
-    link: null,
-    linkText: null,
+    links: [
+      { label:"Verify", url: "https://verify.skilljar.com/c/qgcwubc6p8qd"},
+    ],
+    images: [
+      { src: "/certificates/API-Beginner-Learning-Path.png", caption:"Certificate of completion"},
+    ],
     featured: false,
   },
     {
-    name: "Capture The Flag (CTF) – Introduction to Cybersecurity",
+    name: "Capture The Flag (CTF) - Introduction to Cybersecurity",
     issuer: "VULNHAT",
     detail: "Issued June 2026",
     description:
-      "Introductory cybersecurity and CTF workshop organized by the Computer Science Students' Community (CSSC), University of Ruhuna, in collaboration with VULNHAT (Pvt) Ltd.",
-    link: null,
-    linkText: null,
+      "Introductory cybersecurity and CTF workshop organized by CSSC, University of Ruhuna, with VULNHAT.",
+    links: null,
+    images: [
+      { src: "/certificates/Introduction-to-Cybersecurity.png", caption:"Certificate of participation"},
+    ],
     featured: false,
   },
 ];

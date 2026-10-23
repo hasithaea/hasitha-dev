@@ -1,4 +1,5 @@
 import type { Certification } from "@/data/certifications";
+import Link from "next/link";
 
 export default function CertificationCard({
   certification,
@@ -21,16 +22,12 @@ export default function CertificationCard({
         {certification.description}
       </p>
 
-      {certification.link && (
-        <a
-          href={certification.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block mt-4 text-sm text-accent hover:text-accent-hover transition-colors"
-        >
-          {certification.linkText} →
-        </a>
-      )}
+            <Link
+        href="/certifications#featured"
+        className="mt-4 inline-block text-sm text-accent hover:text-accent-hover transition-colors"
+      >
+        View details
+      </Link>
     </article>
   );
 }
