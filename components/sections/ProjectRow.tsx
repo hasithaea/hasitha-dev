@@ -5,14 +5,12 @@ import type { RepoStats } from "@/lib/github";
 import type { SiteCheck, SiteStatus } from "@/lib/site-status";
 import RelativeTime from "@/components/RelativeTime";
 import ProjectImage from "@/components/sections/ProjectImage";
+import Button from "@/components/Button";
 
 const siteStyle: Record<Exclude<SiteStatus, "unknown">, { dot: string; label: string }> = {
   up: { dot: "bg-status-good", label: "Live" },
   down: { dot: "bg-status-bad", label: "Offline" },
 };
-
-const linkCls =
-  "relative z-10 text-accent hover:text-accent-hover transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent rounded-sm";
 
 export default function ProjectRow({
   project,
@@ -77,24 +75,14 @@ export default function ProjectRow({
 
         <div className="mt-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-2 pt-5 text-sm">
           <div className="flex items-center gap-4">
-            <a
-              href={project.repo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${linkCls} inline-flex items-center gap-1.5`}
-            >
+            <Button href={project.repo} variant="accent" className="relative z-10">
               <FaGithub className="h-4 w-4" aria-hidden />
               Source
-            </a>
+            </Button>
             {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={linkCls}
-              >
+              <Button href={project.live} variant="accent" className="relative z-10">
                 Live site
-              </a>
+              </Button>
             )}
           </div>
 
