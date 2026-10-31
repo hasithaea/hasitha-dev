@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "../Button";
+import Button from "@/components/Button";
 import type { Experience } from "@/data/experience";
 
 export default function ExperienceItem({ item }: { item: Experience }) {

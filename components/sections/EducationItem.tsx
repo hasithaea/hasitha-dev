@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
 import type { Education } from "@/data/education";
-import Button from "../Button";
+import Button from "@/components/Button";
 
 export default function EducationItem({ item }: { item: Education }) {
   return (
