@@ -1,5 +1,5 @@
 "use client";
-
+import Button from "@/components/Button";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -15,9 +15,6 @@ const STACK = [
 
 const trigger =
   "relative block w-full cursor-zoom-in overflow-hidden rounded-lg border border-border-color bg-bg-primary transition-colors hover:border-accent/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
-
-const btn =
-  "rounded-full border border-border-color bg-bg-surface px-3 py-1.5 font-mono text-xs text-text-muted transition-colors hover:border-accent hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 export default function CertificateGallery({
   images,
@@ -131,17 +128,17 @@ export default function CertificateGallery({
               <div className="flex shrink-0 gap-2">
                 {many && (
                   <>
-                    <button type="button" onClick={() => step(-1)} className={btn}>
+                    <Button variant="mono" type="button" onClick={() => step(-1)}>
                       Prev
-                    </button>
-                    <button type="button" onClick={() => step(1)} className={btn}>
+                    </Button>
+                    <Button variant="mono" type="button" onClick={() => step(1)}>
                       Next
-                    </button>
+                    </Button>
                   </>
                 )}
-                <button type="button" onClick={close} className={btn}>
+                <Button variant="mono" type="button" onClick={close}>
                   Close
-                </button>
+                </Button>
               </div>
             </div>
           </div>
