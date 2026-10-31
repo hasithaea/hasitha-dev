@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
 import Footer from "@/components/Footer";
 import CertificateGallery from "@/components/CertificateGallery";
+import Button from "@/components/Button";
 import { certifications, type Certification } from "@/data/certifications";
 
 export const metadata: Metadata = {
@@ -10,9 +11,6 @@ export const metadata: Metadata = {
     "Courses and certifications I've completed across DevOps, cloud, Python, React, APIs, and cybersecurity.",
   alternates: { canonical: "/certifications" },
 };
-
-const pill =
-  "inline-flex items-center gap-1.5 rounded-full border border-border-color px-3 py-1.5 text-sm font-medium text-text-muted transition-colors duration-300 hover:border-accent hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
 
 function ArrowUpRight() {
   return (
@@ -52,16 +50,10 @@ function CertCard({ cert }: { cert: Certification }) {
       {links.length > 0 && (
         <div className="mt-5 flex flex-wrap gap-2 border-t border-border-color pt-5">
           {links.map((l) => (
-            <a
-              key={l.url}
-              href={l.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={pill}
-            >
+            <Button key={l.url} href={l.url} variant="outline">
               {l.label}
               <ArrowUpRight />
-            </a>
+            </Button>
           ))}
         </div>
       )}
