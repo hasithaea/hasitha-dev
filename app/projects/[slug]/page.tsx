@@ -6,6 +6,7 @@ import PageShell from "@/components/PageShell";
 import Footer from "@/components/Footer";
 import RelativeTime from "@/components/RelativeTime";
 import ProjectImage from "@/components/sections/ProjectImage";
+import Button from "@/components/Button";
 import { projects } from "@/data/projects";
 import { getRepoStats } from "@/lib/github";
 import { getSiteStatus } from "@/lib/site-status";
@@ -31,9 +32,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const label = "font-mono text-xs uppercase tracking-wider text-text-muted";
-
-const pill =
-  "inline-flex items-center rounded-full border border-border-color px-3 py-1.5 text-sm font-medium text-text-muted transition-colors duration-300 hover:border-accent hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
 
 const siteLabel = { up: "Up", down: "Down", unknown: "Unknown" } as const;
 const siteDot = {
@@ -133,6 +131,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             )}
           </div>
 
+          {/* Side bar */}
           <aside className="lg:sticky lg:top-28 lg:self-start">
             <div className="space-y-5 rounded-xl border border-border-color bg-bg-surface p-5">
               {/* Links */}
@@ -140,24 +139,14 @@ export default async function ProjectDetailPage({ params }: Props) {
                 <h2 className={label}>Links</h2>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {project.live && (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={pill}
-                    >
+                    <Button href={project.live} variant="outline">
                       Live site
-                    </a>
+                    </Button>
                   )}
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${pill} gap-1.5`}
-                  >
-                    <FaGithub className="h-4 w-4" aria-hidden />
-                    Source
-                  </a>
+                    <Button href={project.repo} variant="outline">
+                      <FaGithub className="h-4 w-4" aria-hidden />
+                      Source
+                    </Button>
                 </div>
               </div>
 

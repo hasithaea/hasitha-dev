@@ -2,11 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Button from "@/components/Button";
 
 export type Shot = { src: string; caption: string; portrait?: boolean };
-
-const btn =
-  "rounded-full border border-border-color bg-bg-surface px-3 py-1.5 font-mono text-xs text-text-muted transition-colors hover:border-accent hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 const frameBase =
   "relative block w-full cursor-zoom-in overflow-hidden border border-border-color transition-colors hover:border-accent/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
@@ -139,17 +137,17 @@ export default function ScreenshotGallery({ shots }: { shots: Shot[] }) {
               <div className="flex shrink-0 gap-2">
                 {shots.length > 1 && (
                   <>
-                    <button type="button" onClick={() => step(-1)} className={btn}>
+                    <Button variant="mono" type="button" onClick={() => step(-1)}>
                       Prev
-                    </button>
-                    <button type="button" onClick={() => step(1)} className={btn}>
+                    </Button>
+                    <Button variant="mono" type="button" onClick={() => step(1)}>
                       Next
-                    </button>
+                    </Button>
                   </>
                 )}
-                <button type="button" onClick={close} className={btn}>
+                <Button variant="mono" type="button" onClick={close}>
                   Close
-                </button>
+                </Button>
               </div>
             </div>
           </div>

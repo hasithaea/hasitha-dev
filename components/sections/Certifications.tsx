@@ -1,6 +1,6 @@
 import SectionHeading from "@/components/SectionHeading";
 import CertificationCard from "@/components/sections/CertificationCard";
-import Button from "../Button";
+import Button from "@/components/Button";
 import { certifications } from "@/data/certifications";
 
 export default function Certifications() {

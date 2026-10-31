@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Button from "./Button";
+import Button from "@/components/Button";
 
 type FooterVariant = "full" | "compact";
 
