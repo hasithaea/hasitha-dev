@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
-type Variant = "pill" | "solid" | "link";
+type Variant = "pill" | "solid" | "link" | "outline" | "mono";
 
 const styles: Record<Variant, string> = {
   // pill button
@@ -11,6 +11,11 @@ const styles: Record<Variant, string> = {
     "w-full bg-accent hover:bg-accent-hover hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 text-bg-primary font-medium text-sm rounded-xl px-4 py-2.5 transition-all duration-200 shadow-[0_8px_24px_-8px_rgba(255,107,53,0.45)]",
   // link type button
   link: "text-sm text-text-muted hover:text-text-primary underline underline-offset-4 decoration-border-color hover:decoration-accent/60 transition-colors",
+  // bordered pill (verify buttons, project page links)
+  outline:
+    "inline-flex items-center gap-1.5 rounded-full border border-border-color px-3 py-1.5 text-sm font-medium text-text-muted transition-colors duration-300 hover:border-accent hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent",
+  // small mono button (lightbox Prev / Next / Close)
+  mono: "rounded-full border border-border-color bg-bg-surface px-3 py-1.5 font-mono text-xs text-text-muted transition-colors hover:border-accent hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
 };
 
 type Props = {
