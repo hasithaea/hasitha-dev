@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa6";
 import type { Project } from "@/data/projects";
-
-const linkCls =
-  "relative z-10 text-accent hover:text-accent-hover transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent rounded-sm";
+import Button from "@/components/Button";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
@@ -38,25 +36,15 @@ export default function ProjectCard({ project }: { project: Project }) {
       </ul>
 
       <div className="mt-5 flex items-center gap-4 text-sm">
-        <a
-          href={project.repo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${linkCls} inline-flex items-center gap-1.5`}
-        >
+        <Button href={project.repo} variant="accent" className="relative z-10">
           <FaGithub className="h-4 w-4" aria-hidden />
           Source
-        </a>
+        </Button>
 
         {project.live && (
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkCls}
-          >
+          <Button href={project.live} variant="accent" className="relative z-10">
             Live site
-          </a>
+          </Button>
         )}
       </div>
     </article>
