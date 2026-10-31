@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
-type Variant = "pill" | "solid" | "link" | "outline" | "mono";
+type Variant = "pill" | "solid" | "link" | "outline" | "mono" | "accent";
 
 const styles: Record<Variant, string> = {
   // pill button
@@ -16,6 +16,8 @@ const styles: Record<Variant, string> = {
     "inline-flex items-center gap-1.5 rounded-full border border-border-color px-3 py-1.5 text-sm font-medium text-text-muted transition-colors duration-300 hover:border-accent hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent",
   // small mono button (lightbox Prev / Next / Close)
   mono: "rounded-full border border-border-color bg-bg-surface px-3 py-1.5 font-mono text-xs text-text-muted transition-colors hover:border-accent hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+  // accent text link (card links: Source, Live site, View details)
+  accent: "inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent-hover transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent rounded-sm",
 };
 
 type Props = {
