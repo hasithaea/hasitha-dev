@@ -1,7 +1,8 @@
 "use client";
-import Button from "@/components/Button";
+
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Button from "@/components/Button";
 
 export type Shot = { src: string; caption: string; portrait?: boolean };
 
