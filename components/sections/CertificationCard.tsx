@@ -1,5 +1,5 @@
 import type { Certification } from "@/data/certifications";
-import Link from "next/link";
+import Button from "@/components/Button";
 
 export default function CertificationCard({
   certification,
@@ -22,12 +22,9 @@ export default function CertificationCard({
         {certification.description}
       </p>
 
-            <Link
-        href="/certifications#featured"
-        className="mt-4 inline-block text-sm text-accent hover:text-accent-hover transition-colors"
-      >
+      <Button href="/certifications#featured" variant="accent" className="mt-4">
         View details
-      </Link>
+      </Button>
     </article>
   );
 }
