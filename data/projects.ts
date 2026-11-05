@@ -1,3 +1,5 @@
+import type { TagSlug } from "./tags";
+
 export type ProjectSection = {
   heading: string;
   body: string[];
@@ -13,6 +15,7 @@ export type Project = {
   image?: string;
   imageFit?: "cover" | "contain"; // contain for phone screenshots
   hideCommits?: boolean; // hide the commit count
+  tags: TagSlug[];
   detail?: {
     sections: ProjectSection[];
     gallery?: { src: string; caption: string; portrait?: boolean }[];
@@ -29,6 +32,7 @@ export const projects: Project[] = [
     repo: "https://github.com/hasithaea/hasitha-dev",
     live: "https://hasitha.dev",
     image: "/projects/hasitha-dev-cover.png",
+    tags: ["nextjs", "react", "typescript", "tailwindcss", "vercel"],
     detail: {
       sections: [
         {
@@ -73,6 +77,7 @@ export const projects: Project[] = [
     repo: "https://github.com/hasithaea/DevOps-with-Docker/tree/main/express-ci-cd-demo",
     live: "https://ci-cd-demo-of6g.onrender.com",
     image: "/projects/docker-ci-cd-pipeline-cover.png",
+    tags: ["docker", "docker-compose", "github-actions", "render"],
     detail: {
       sections: [
         {
@@ -122,6 +127,7 @@ export const projects: Project[] = [
     live: null,
     image: "/projects/majesty-cover.png",
     hideCommits: true, // team repo
+    tags: ["html-css", "javascript", "php", "docker", "docker-compose", "mysql"],
     detail: {
       sections: [
         {
@@ -172,6 +178,7 @@ export const projects: Project[] = [
     repo: "https://github.com/hasithaea/80-attendance-tracker-ui",
     live: null,
     image: "/projects/attendance-tracker-cover.png",
+    tags: ["figma"],
     detail: {
       sections: [
         {
