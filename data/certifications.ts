@@ -1,7 +1,10 @@
+import type { TagSlug } from "./tags";
+
 export type Certification = {
   name: string;
   issuer: string;
   detail: string;
+  tags: TagSlug[];
   description: string;
   links: { label: string; url: string }[] | null;
   images: { src: string; caption: string }[] | null;
@@ -13,6 +16,7 @@ export const certifications: Certification[] = [
     name: "DevOps with Docker",
     issuer: "University of Helsinki",
     detail: "Completed June 2026",
+    tags: ["docker", "docker-compose"],
     description:
       "Completed all three modules covering Docker Basics, Docker Compose, and Security & Optimization. 3 ECTS.",
     links: [
@@ -31,6 +35,7 @@ export const certifications: Certification[] = [
     name: "Microsoft Azure Fundamentals & Cloud Engineering",
     issuer: "NextGen Campus",
     detail: "Issued April 2026",
+    tags: ["azure"],
     description:
       "Hands on workshop focused on Microsoft Azure and cloud computing.",
     links: [
@@ -45,6 +50,7 @@ export const certifications: Certification[] = [
     name: "Python for Beginners",
     issuer: "University of Moratuwa",
     detail: "Issued April 2026",
+    tags: ["python"],
     description:
       "Foundational Python programming and problem solving.",
     links: [
@@ -59,6 +65,7 @@ export const certifications: Certification[] = [
     name: "ReactJS for Beginners",
     issuer: "Simplilearn",
     detail: "Issued May 2026",
+    tags: ["react", "javascript"],
     description:
       "Introductory learning in React.js and JavaScript.",
     links: [
@@ -73,6 +80,7 @@ export const certifications: Certification[] = [
     name: "API Beginner Learning Path",
     issuer: "Postman",
     detail: "Issued April 2026",
+    tags: ["postman"],
     description:
       "Foundational API concepts and API testing using Postman.",
     links: [
@@ -87,6 +95,7 @@ export const certifications: Certification[] = [
     name: "Capture The Flag (CTF) - Introduction to Cybersecurity",
     issuer: "VULNHAT",
     detail: "Issued June 2026",
+    tags: [],
     description:
       "Introductory cybersecurity and CTF workshop organized by CSSC, University of Ruhuna, with VULNHAT.",
     links: null,
