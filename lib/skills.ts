@@ -13,8 +13,8 @@ export interface Evidence {
 
 // Weight for ordering.
 const WEIGHT: Record<EvidenceType, number> = {
-  certification: 2,
   project: 3,
+  certification: 2,
   repo: 1,
 };
 
@@ -26,7 +26,6 @@ export type Counts = Record<EvidenceType, number>;
 export interface Skill {
   slug: TagSlug;
   label: string;
-  learning: boolean;
   counts: Counts;
   weight: number;
 }
@@ -80,7 +79,6 @@ export function getSkillsByArea(): Record<Area, Skill[]> {
     out[tag.area].push({
       slug,
       label: tag.label,
-      learning: tag.learning ?? false,
       counts,
       weight,
     });

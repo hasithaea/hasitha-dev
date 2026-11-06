@@ -3,7 +3,6 @@ export type Area = "languages" | "web" | "devops" | "cloud" | "data";
 export interface Tag {
   label: string;
   area: Area;
-  learning?: boolean;
 }
 
 export const tags = {
@@ -30,7 +29,7 @@ export const tags = {
   bash: { label: "Bash", area: "devops" },
 
   // Cloud & hosting
-  azure: { label: "Azure", area: "cloud", learning: true },
+  azure: { label: "Azure", area: "cloud" },
   vercel: { label: "Vercel", area: "cloud" },
   supabase: { label: "Supabase", area: "cloud" },
 
