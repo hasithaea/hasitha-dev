@@ -1,6 +1,9 @@
+import type { TagSlug } from "./tags";
+
 export type Coursework = {
   name: string;
   repo: string | null;
+  tags?: TagSlug[];
 };
 
 export type Education = {
@@ -25,18 +28,22 @@ export const education: Education[] = [
       {
         name: "Data Structures and Algorithms",
         repo: "https://github.com/hasithaea/C-DSA-assignments",
+        tags: ["c", "bash", "linux"],
       },
       {
         name: "Object Oriented Programming",
         repo: "https://github.com/hasithaea/oop-with-java",
+        tags: ["java"],
       },
       {
         name: "Database Management Systems",
         repo: "https://github.com/hasithaea/sql-learning",
+        tags: ["mysql"],
       },
       {
         name: "MATLAB",
         repo: "https://github.com/hasithaea/matlab-learning",
+        tags: ["matlab"],
       },
       { 
         name: "Operating Systems",
