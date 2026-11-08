@@ -1,18 +1,7 @@
+import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import { areaLabels, areaOrder, type Area } from "@/data/tags";
-import {
-  getSkillsByArea,
-  type Skill,
-  type EvidenceType,
-} from "@/lib/skills";
-
-const breakdownOrder: EvidenceType[] = ["project", "certification", "repo"];
-
-const typeLabels: Record<EvidenceType, [string, string]> = {
-  project: ["project", "projects"],
-  certification: ["certification", "certifications"],
-  repo: ["course repo", "course repos"],
-};
+import { formatCounts, getSkillsByArea, type Skill } from "@/lib/skills";
 
 export default function Skills() {
   const byArea = getSkillsByArea();
@@ -43,38 +32,26 @@ function AreaGroup({ area, skills }: { area: Area; skills: Skill[] }) {
         {areaLabels[area]}
       </h3>
 
-      <div className="overflow-hidden rounded-xl border border-border-color bg-bg-surface/70">
-        {skills.map((skill, i) => (
-          <SkillRow key={skill.slug} skill={skill} isFirst={i === 0} />
+      <ul className="overflow-hidden rounded-xl border border-border-color bg-bg-surface">
+        {skills.map((skill) => (
+          <li
+            key={skill.slug}
+            className="border-t border-border-color first:border-t-0"
+          >
+            <Link
+              href={skill.href}
+              className="group flex flex-col gap-0.5 px-4 py-2.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+            >
+              <span className="text-[15px] font-medium text-text-primary transition-colors duration-150 group-hover:text-accent">
+                {skill.label}
+              </span>
+              <span className="text-[13px] tabular-nums text-text-muted sm:text-right">
+                {formatCounts(skill.counts)}
+              </span>
+            </Link>
+          </li>
         ))}
-      </div>
-    </div>
-  );
-}
-
-function SkillRow({ skill, isFirst }: { skill: Skill; isFirst: boolean }) {
-  const breakdown = breakdownOrder
-    .filter((t) => skill.counts[t] > 0)
-    .map((t) => {
-      const n = skill.counts[t];
-      const [one, many] = typeLabels[t];
-      return `${n} ${n === 1 ? one : many}`;
-    })
-    .join(" · ");
-
-  return (
-    <div
-      className={`flex flex-col gap-0.5 px-4 py-2.5 transition-colors duration-150 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6 ${
-        !isFirst ? "border-t border-border-color/60" : ""
-      }`}
-    >
-      <span className="text-[15px] font-medium text-text-primary">
-        {skill.label}
-      </span>
-
-      <p className="text-[13px] tabular-nums text-text-muted sm:text-right">
-        {breakdown}
-      </p>
+      </ul>
     </div>
   );
 }
