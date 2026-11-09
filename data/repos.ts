@@ -1,7 +1,6 @@
 import type { TagSlug } from "./tags";
 
 // Repos that are not university coursework.
-// University coursework stays in education.ts.
 export type Repo = {
   name: string;
   repo: string;
