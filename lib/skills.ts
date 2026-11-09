@@ -86,7 +86,7 @@ export function getEvidence(): Evidence[] {
           title: c.name,
           type: "repo" as const,
           tags: c.tags ?? [],
-          context: "Course repo",
+          context: c.description ?? "Course repo",
           href: c.repo ?? null,
           external: true,
           image: null,
