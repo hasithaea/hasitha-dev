@@ -2,6 +2,7 @@ import { tags, areaOrder, type Area, type Tag, type TagSlug } from "@/data/tags"
 import { projects } from "@/data/projects";
 import { certifications } from "@/data/certifications";
 import { education } from "@/data/education";
+import { repos } from "@/data/repos";
 
 export type EvidenceType = "project" | "certification" | "repo";
 
@@ -34,7 +35,7 @@ export const typeOrder: EvidenceType[] = ["project", "certification", "repo"];
 const typeLabels: Record<EvidenceType, [string, string]> = {
   project: ["project", "projects"],
   certification: ["certification", "certifications"],
-  repo: ["course repo", "course repos"],
+  repo: ["repo", "repos"],
 };
 
 export type Counts = Record<EvidenceType, number>;
@@ -92,6 +93,15 @@ export function getEvidence(): Evidence[] {
           image: null,
         })),
     ),
+    ...repos.map((r) => ({
+      title: r.name,
+      type: "repo" as const,
+      tags: r.tags,
+      context: r.description,
+      href: r.repo,
+      external: true,
+      image: null,
+    })),
   ];
 }
 

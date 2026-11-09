@@ -29,7 +29,7 @@ type Props = { params: Promise<{ tag: string }> };
 const groupHeadings: Record<EvidenceType, string> = {
   project: "Projects",
   certification: "Certifications",
-  repo: "Course repos",
+  repo: "Repos",
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
