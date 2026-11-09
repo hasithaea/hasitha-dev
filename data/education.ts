@@ -30,7 +30,7 @@ export const education: Education[] = [
         name: "Data Structures and Algorithms",
         repo: "https://github.com/hasithaea/C-DSA-assignments",
         description: "C assignments on core data structures, with a script that builds and runs them.",
-        tags: ["c", "bash", "linux"],
+        tags: ["c", "shell-scripting", "linux"],
       },
       {
         name: "Object Oriented Programming",
