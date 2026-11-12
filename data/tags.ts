@@ -26,7 +26,7 @@ export const tags = {
   "github-actions": { label: "GitHub Actions", area: "devops" },
   render: { label: "Render", area: "devops" },
   linux: { label: "Linux", area: "devops" },
-  bash: { label: "Bash", area: "devops" },
+  "shell-scripting": { label: "Shell scripting", area: "devops" },
 
   // Cloud & hosting
   azure: { label: "Azure", area: "cloud" },

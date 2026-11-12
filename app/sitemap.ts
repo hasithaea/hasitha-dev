@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
+import { getTagPageSlugs } from "@/lib/skills";
 import { projects } from "@/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,6 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.6,
     }));
+
+  const skillPages = getTagPageSlugs().map((tag) => ({
+    url: `${SITE_URL}/skills/${tag}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.5,
+  }));
 
   return [
     {
@@ -28,6 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    ...skillPages,
     {
       url: `${SITE_URL}/contact`,
       changeFrequency: "yearly",
