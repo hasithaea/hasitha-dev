@@ -53,11 +53,11 @@ export default function Header() {
   return (
     <header
       onFocusCapture={() => setHidden(false)}
-      className={`fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-3 transition-transform duration-300 ease-out motion-reduce:transition-none ${
+      className={`fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-3 lg:px-10 transition-transform duration-300 ease-out motion-reduce:transition-none ${
         hidden && !open ? "translate-y-[-130%]" : "translate-y-0"
       }`}
     >
-      <div className="w-full max-w-3xl">
+      <div className="w-full max-w-4xl 2xl:max-w-5xl">
         <nav
           aria-label="Main"
           className="glass rounded-full [--glass-drop:0_12px_32px_-12px_rgba(0,0,0,0.6)]"
