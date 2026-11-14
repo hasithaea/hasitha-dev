@@ -43,7 +43,7 @@ export default function Footer({ variant = "full" }: FooterProps) {
 
   return (
     <footer className="w-full border-t border-border-color bg-bg-surface py-12 md:py-16">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="container-site">
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:gap-8">
           
           {/* Brand Column */}
