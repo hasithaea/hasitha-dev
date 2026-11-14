@@ -38,6 +38,10 @@ body {
 
 /* Liquid glass */
 @layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-6 lg:px-10 2xl:max-w-350;
+  }
+
   .glass {
     position: relative;
     background: linear-gradient(
