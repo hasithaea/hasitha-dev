@@ -64,7 +64,7 @@ export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
     <aside
       aria-label="GitHub activity"
       style={{ "--card-w": `${cardWidth}px` } as React.CSSProperties}
-      className="w-full max-w-[var(--card-w)] overflow-hidden rounded-xl border border-border-color bg-bg-surface lg:justify-self-end"
+      className="w-full max-w-(--card-w) overflow-hidden rounded-xl border border-border-color bg-bg-surface lg:justify-self-end"
     >
       {/* Header */}
       <div className="p-5">
@@ -118,22 +118,23 @@ export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
             <i
               key={d.date}
               title={`${d.count} on ${d.date}`}
-              className={`block aspect-square w-full rounded-[2px] ${levelBg[d.level]}`}
+              className={`block aspect-square w-full rounded-xs ${levelBg[d.level]}`}
             />
           ))}
         </div>
 
-        <div className="mt-2.5 flex items-center justify-between text-[11px] text-text-muted">
-          <span className="flex items-center gap-1" aria-hidden="true">
-            Less
-            {([0, 1, 2, 3, 4] as Level[]).map((l) => (
-              <i
-                key={l}
-                className={`block h-[9px] w-[9px] rounded-[2px] ${levelBg[l]}`}
-              />
-            ))}
-            More
-          </span>
+        <div
+          className="mt-2.5 flex items-center gap-1 text-[11px] text-text-muted"
+          aria-hidden="true"
+        >
+          Less
+          {([0, 1, 2, 3, 4] as Level[]).map((l) => (
+            <i
+              key={l}
+              className={`block size-2.25 rounded-xs ${levelBg[l]}`}
+            />
+          ))}
+          More
         </div>
       </div>
 

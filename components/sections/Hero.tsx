@@ -17,7 +17,7 @@ export default async function Hero() {
   const activity = await getGitHubActivity();
 
   return (
-    <section className="relative flex flex-col justify-center py-16 sm:py-24 lg:min-h-[100dvh]">
+    <section className="relative flex flex-col justify-center py-16 sm:py-24 lg:min-h-dvh">
       <div
         className={
           activity
