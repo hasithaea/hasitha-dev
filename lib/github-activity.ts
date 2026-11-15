@@ -13,7 +13,7 @@ export type GitHubActivity = {
   issues: number;
   days: { date: string; count: number; level: Level }[];
   lastPush: string | null;
-  recent: { repo: string; sha: string; message: string; date: string }[];
+  recent: { repo: string; sha: string; message: string }[];
 };
 
 const QUERY = `
@@ -48,7 +48,6 @@ const QUERY = `
               ... on Commit {
                 oid
                 messageHeadline
-                committedDate
               }
             }
           }
@@ -102,7 +101,7 @@ async function fetchActivity(): Promise<GitHubActivity> {
     name: string;
     pushedAt: string;
     defaultBranchRef: {
-      target?: { oid?: string; messageHeadline?: string; committedDate?: string };
+      target?: { oid?: string; messageHeadline?: string };
     } | null;
   }[] = user.repositories.nodes ?? [];
 
@@ -112,7 +111,6 @@ async function fetchActivity(): Promise<GitHubActivity> {
       repo: r.name,
       sha: r.defaultBranchRef!.target!.oid!.slice(0, 7),
       message: r.defaultBranchRef!.target!.messageHeadline ?? "",
-      date: r.defaultBranchRef!.target!.committedDate ?? r.pushedAt,
     }));
 
   return {
