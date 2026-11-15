@@ -1,5 +1,7 @@
+import { unstable_cache } from "next/cache";
+
 const LOGIN = "hasithaea";
-const WEEKS = 35;
+const WEEKS = 36;
 
 export type Level = 0 | 1 | 2 | 3 | 4;
 
@@ -65,66 +67,74 @@ function toLevel(count: number, max: number): Level {
   return 4;
 }
 
-export async function getGitHubActivity(): Promise<GitHubActivity | null> {
+async function fetchActivity(): Promise<GitHubActivity> {
   const token = process.env.GITHUB_TOKEN;
-  if (!token) return null;
+  if (!token) throw new Error("GITHUB_TOKEN is not set");
 
-  try {
-    const res = await fetch("https://api.github.com/graphql", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ query: QUERY, variables: { login: LOGIN } }),
-      next: { revalidate: 3600 },
-    });
-    if (!res.ok) return null;
+  const res = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query: QUERY, variables: { login: LOGIN } }),
+  });
+  if (!res.ok) throw new Error(`GitHub GraphQL ${res.status}`);
 
-    const json = await res.json();
-    const user = json?.data?.user;
-    if (!user || json.errors) return null;
+  const json = await res.json();
+  const user = json?.data?.user;
+  if (!user || json.errors) throw new Error("GitHub GraphQL returned errors");
 
-    const collection = user.contributionsCollection;
-    const calendar = collection.contributionCalendar;
+  const collection = user.contributionsCollection;
+  const calendar = collection.contributionCalendar;
 
-    const weeks: { contributionDays: { date: string; contributionCount: number }[] }[] =
-      calendar.weeks.slice(-WEEKS);
-    const raw = weeks.flatMap((w) => w.contributionDays);
-    const max = Math.max(0, ...raw.map((d) => d.contributionCount));
-    const days = raw.map((d) => ({
-      date: d.date,
-      count: d.contributionCount,
-      level: toLevel(d.contributionCount, max),
+  const weeks: { contributionDays: { date: string; contributionCount: number }[] }[] =
+    calendar.weeks.slice(-WEEKS);
+  const raw = weeks.flatMap((w) => w.contributionDays);
+  const max = Math.max(0, ...raw.map((d) => d.contributionCount));
+  const days = raw.map((d) => ({
+    date: d.date,
+    count: d.contributionCount,
+    level: toLevel(d.contributionCount, max),
+  }));
+
+  const repos: {
+    name: string;
+    pushedAt: string;
+    defaultBranchRef: {
+      target?: { oid?: string; messageHeadline?: string; committedDate?: string };
+    } | null;
+  }[] = user.repositories.nodes ?? [];
+
+  const recent = repos
+    .filter((r) => r.defaultBranchRef?.target?.oid)
+    .map((r) => ({
+      repo: r.name,
+      sha: r.defaultBranchRef!.target!.oid!.slice(0, 7),
+      message: r.defaultBranchRef!.target!.messageHeadline ?? "",
+      date: r.defaultBranchRef!.target!.committedDate ?? r.pushedAt,
     }));
 
-    const repos: {
-      name: string;
-      pushedAt: string;
-      defaultBranchRef: {
-        target?: { oid?: string; messageHeadline?: string; committedDate?: string };
-      } | null;
-    }[] = user.repositories.nodes ?? [];
+  return {
+    login: LOGIN,
+    total: calendar.totalContributions,
+    commits: collection.totalCommitContributions,
+    pullRequests: collection.totalPullRequestContributions,
+    issues: collection.totalIssueContributions,
+    days,
+    lastPush: repos[0]?.pushedAt ?? null,
+    recent,
+  };
+}
 
-    const recent = repos
-      .filter((r) => r.defaultBranchRef?.target?.oid)
-      .map((r) => ({
-        repo: r.name,
-        sha: r.defaultBranchRef!.target!.oid!.slice(0, 7),
-        message: r.defaultBranchRef!.target!.messageHeadline ?? "",
-        date: r.defaultBranchRef!.target!.committedDate ?? r.pushedAt,
-      }));
+const cachedActivity = unstable_cache(fetchActivity, ["github-activity"], {
+  revalidate: 3600,
+});
 
-    return {
-      login: LOGIN,
-      total: calendar.totalContributions,
-      commits: collection.totalCommitContributions,
-      pullRequests: collection.totalPullRequestContributions,
-      issues: collection.totalIssueContributions,
-      days,
-      lastPush: repos[0]?.pushedAt ?? null,
-      recent,
-    };
+// Null only if there has never been a good result
+export async function getGitHubActivity(): Promise<GitHubActivity | null> {
+  try {
+    return await cachedActivity();
   } catch {
     return null;
   }
