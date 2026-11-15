@@ -44,10 +44,6 @@ function monthLabels(weeks: Day[][]): string[] {
 const nf = new Intl.NumberFormat("en-US");
 
 export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
-  const recentPush =
-    data.lastPush !== null &&
-    Date.now() - new Date(data.lastPush).getTime() < 7 * 24 * 60 * 60 * 1000;
-
   const stats = [
     { label: "Commits", value: data.commits },
     { label: "Pull requests", value: data.pullRequests },
@@ -69,7 +65,6 @@ export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
       {/* Header */}
       <div className="p-5">
         <div className="flex items-center justify-between gap-3">
-          
           <a
             href={`https://github.com/${data.login}`}
             target="_blank"
