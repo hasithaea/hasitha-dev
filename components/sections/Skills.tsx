@@ -10,12 +10,25 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="scroll-mt-24 border-t border-border-color py-14"
+      className="scroll-mt-24 border-t border-border-color py-16 md:py-20"
     >
-      <div className="mx-auto max-w-3xl">
-        <SectionHeading>Skills</SectionHeading>
+      <SectionHeading>Skills</SectionHeading>
 
-        <div className="mt-8 space-y-6">
+      <div className="mt-8 grid gap-10 md:grid-cols-[1fr_1.6fr] md:gap-16 lg:gap-24">
+        {/* Intro */}
+        <div className="md:sticky md:top-28 md:self-start">
+          <h3 className="text-balance text-2xl font-medium leading-snug tracking-tight text-text-primary md:text-3xl md:leading-snug">
+            What I work with, and{" "}
+            <span className="text-accent">Where I&apos;ve used it.</span>
+          </h3>
+          <p className="mt-4 text-[15px] leading-relaxed text-text-muted">
+            Counts show the projects, certifications and repos behind each
+            skill. Select one to see the evidence.
+          </p>
+        </div>
+
+        {/* Groups */}
+        <div className="space-y-8">
           {areas.map((area) => (
             <AreaGroup key={area} area={area} skills={byArea[area]} />
           ))}
@@ -28,24 +41,22 @@ export default function Skills() {
 function AreaGroup({ area, skills }: { area: Area; skills: Skill[] }) {
   return (
     <div>
-      <h3 className="mb-2 px-4 text-[11px] font-medium uppercase tracking-[0.14em] text-text-muted">
+      <h3 className="mb-2.5 px-4 text-[11px] font-medium uppercase tracking-[0.14em] text-text-muted">
         {areaLabels[area]}
       </h3>
 
-      <ul className="overflow-hidden rounded-xl border border-border-color bg-bg-surface">
+      {/* Single column below lg; two columns from lg. A lone last item spans the row. */}
+      <ul className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border-color bg-border-color lg:grid-cols-2 lg:[&>li:last-child:nth-child(odd)]:col-span-2">
         {skills.map((skill) => (
-          <li
-            key={skill.slug}
-            className="border-t border-border-color first:border-t-0"
-          >
+          <li key={skill.slug} className="bg-bg-surface">
             <Link
               href={skill.href}
-              className="group flex flex-col gap-0.5 px-4 py-2.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+              className="group flex h-full flex-col justify-between gap-1.5 px-4 py-3 transition-colors duration-150 hover:bg-white/[0.03] focus-visible:bg-white/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
             >
               <span className="text-[15px] font-medium text-text-primary transition-colors duration-150 group-hover:text-accent">
                 {skill.label}
               </span>
-              <span className="text-[13px] tabular-nums text-text-muted sm:text-right">
+              <span className="text-[12px] leading-snug text-text-muted">
                 {formatCounts(skill.counts)}
               </span>
             </Link>
