@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <PageShell footer={<Footer />}>
+    <PageShell width="site" footer={<Footer />}>
       <Hero />
       <About />
       <Projects />
