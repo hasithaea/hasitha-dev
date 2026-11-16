@@ -51,7 +51,7 @@ function AreaGroup({ area, skills }: { area: Area; skills: Skill[] }) {
           <li key={skill.slug} className="bg-bg-surface">
             <Link
               href={skill.href}
-              className="group flex h-full flex-col justify-between gap-1.5 px-4 py-3 transition-colors duration-150 hover:bg-white/[0.03] focus-visible:bg-white/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
+              className="group flex h-full flex-col justify-between gap-1.5 px-4 py-3 transition-colors duration-150 hover:bg-white/3 focus-visible:bg-white/3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
             >
               <span className="text-[15px] font-medium text-text-primary transition-colors duration-150 group-hover:text-accent">
                 {skill.label}
