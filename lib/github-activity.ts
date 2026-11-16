@@ -133,7 +133,8 @@ const cachedActivity = unstable_cache(fetchActivity, ["github-activity"], {
 export async function getGitHubActivity(): Promise<GitHubActivity | null> {
   try {
     return await cachedActivity();
-  } catch {
+  } catch (err) {
+    console.error("github-activity failed:", err);
     return null;
   }
 }
