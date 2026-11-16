@@ -10,6 +10,8 @@ import Certifications from "@/components/sections/Certifications";
 import Skills from "@/components/sections/Skills";
 import ContactCTA from "@/components/sections/ContactCTA";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   description:
     "Portfolio of Hasitha Amarasinghe - CS undergraduate at the University of Ruhuna exploring DevOps, Linux, and infrastructure.",
@@ -17,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <PageShell footer={<Footer />}>
+    <PageShell width="site" footer={<Footer />}>
       <Hero />
       <About />
       <Projects />
