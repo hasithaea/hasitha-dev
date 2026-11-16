@@ -45,7 +45,7 @@ function AreaGroup({ area, skills }: { area: Area; skills: Skill[] }) {
         {areaLabels[area]}
       </h3>
 
-      {/* Single column below lg; two columns from lg. A lone last item spans the row. */}
+      {/* Skill cards */}
       <ul className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border-color bg-border-color lg:grid-cols-2 lg:[&>li:last-child:nth-child(odd)]:col-span-2">
         {skills.map((skill) => (
           <li key={skill.slug} className="bg-bg-surface">
