@@ -1,15 +1,18 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import Button from "@/components/Button";
+import Lightbox, {
+  type LightboxHandle,
+  type LightboxItem,
+} from "@/components/Lightbox";
 
-export type Shot = { src: string; caption: string; portrait?: boolean };
+export type Shot = LightboxItem & { portrait?: boolean };
+
+type Entry = { shot: Shot; i: number };
 
 const frameBase =
   "relative block w-full cursor-zoom-in overflow-hidden border border-border-color transition-colors hover:border-accent/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
-
-type Entry = { shot: Shot; i: number };
 
 function Thumb({
   entry,
@@ -19,6 +22,7 @@ function Thumb({
   onOpen: (i: number) => void;
 }) {
   const { shot, i } = entry;
+
   return (
     <figure>
       <button
@@ -51,32 +55,12 @@ function Thumb({
 }
 
 export default function ScreenshotGallery({ shots }: { shots: Shot[] }) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const [index, setIndex] = useState<number | null>(null);
-  const isOpen = index !== null;
-  const current = index !== null ? shots[index] : null;
+  const lightbox = useRef<LightboxHandle>(null);
+  const open = (i: number) => lightbox.current?.open(i);
 
   const entries: Entry[] = shots.map((shot, i) => ({ shot, i }));
   const landscape = entries.filter((e) => !e.shot.portrait);
   const portrait = entries.filter((e) => e.shot.portrait);
-
-  const open = (i: number) => {
-    setIndex(i);
-    dialogRef.current?.showModal();
-  };
-  const close = () => dialogRef.current?.close();
-  const step = (dir: number) =>
-    setIndex((i) => (i === null ? i : (i + dir + shots.length) % shots.length));
-
-  // Lock page scroll while the viewer is open.
-  useEffect(() => {
-    if (!isOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [isOpen]);
 
   return (
     <>
@@ -90,7 +74,6 @@ export default function ScreenshotGallery({ shots }: { shots: Shot[] }) {
         )}
 
         {portrait.length > 0 && (
-          // Phone screenshots
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {portrait.map((e) => (
               <Thumb key={e.shot.src} entry={e} onOpen={open} />
@@ -99,60 +82,7 @@ export default function ScreenshotGallery({ shots }: { shots: Shot[] }) {
         )}
       </div>
 
-      {/* Native dialog */}
-      <dialog
-        ref={dialogRef}
-        onClose={() => setIndex(null)}
-        onClick={(e) => {
-          // Clicks on the backdrop target the dialog element itself.
-          if (e.target === e.currentTarget) close();
-        }}
-        onKeyDown={(e) => {
-          if (shots.length < 2) return;
-          if (e.key === "ArrowLeft") step(-1);
-          if (e.key === "ArrowRight") step(1);
-        }}
-        aria-label="Screenshot viewer"
-        className="m-auto w-[min(92vw,1100px)] max-w-none bg-transparent p-0 text-text-primary backdrop:bg-black/85"
-      >
-        {current && (
-          <div className="flex flex-col gap-3">
-            <div className="relative h-[78vh] w-full">
-              <Image
-                src={current.src}
-                alt={current.caption}
-                fill
-                sizes="92vw"
-                className="object-contain"
-              />
-            </div>
-
-            <div className="flex items-center justify-between gap-4">
-              <p className="text-sm text-text-muted">
-                {current.caption}
-                <span className="ml-3 font-mono text-xs">
-                  {(index ?? 0) + 1} / {shots.length}
-                </span>
-              </p>
-              <div className="flex shrink-0 gap-2">
-                {shots.length > 1 && (
-                  <>
-                    <Button variant="mono" type="button" onClick={() => step(-1)}>
-                      Prev
-                    </Button>
-                    <Button variant="mono" type="button" onClick={() => step(1)}>
-                      Next
-                    </Button>
-                  </>
-                )}
-                <Button variant="mono" type="button" onClick={close}>
-                  Close
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
-      </dialog>
+      <Lightbox ref={lightbox} items={shots} label="Screenshot viewer" />
     </>
   );
 }

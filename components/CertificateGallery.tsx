@@ -1,13 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import Button from "@/components/Button";
+import Lightbox, {
+  type LightboxHandle,
+  type LightboxItem,
+} from "@/components/Lightbox";
 
-export type CertificateImage = { src: string; caption: string };
+export type CertificateImage = LightboxItem;
 
-const FRAME = "aspect-[842/595]";
+const FRAME = "aspect-842/595";
 
+// stacked certificates
 const STACK = [
   { left: "34%", top: "36%", z: 30 },
   { left: "21%", top: "21%", z: 20 },
@@ -22,37 +26,19 @@ export default function CertificateGallery({
 }: {
   images: CertificateImage[];
 }) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const [index, setIndex] = useState<number | null>(null);
-  const isOpen = index !== null;
-  const current = index !== null ? images[index] : null;
-  const many = images.length > 1;
-
-  const open = (i: number) => {
-    setIndex(i);
-    dialogRef.current?.showModal();
-  };
-  const close = () => dialogRef.current?.close();
-  const step = (dir: number) =>
-    setIndex((i) => (i === null ? i : (i + dir + images.length) % images.length));
-
-  useEffect(() => {
-    if (!isOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [isOpen]);
+  const lightbox = useRef<LightboxHandle>(null);
 
   if (images.length === 0) return null;
+
+  const many = images.length > 1;
+  const open = () => lightbox.current?.open(0);
 
   return (
     <>
       {many ? (
         <button
           type="button"
-          onClick={() => open(0)}
+          onClick={open}
           aria-label={`View all ${images.length} certificates`}
           className={`${trigger} ${FRAME}`}
         >
@@ -78,7 +64,7 @@ export default function CertificateGallery({
       ) : (
         <button
           type="button"
-          onClick={() => open(0)}
+          onClick={open}
           aria-label={`View larger: ${images[0].caption}`}
           className={`${trigger} ${FRAME}`}
         >
@@ -92,59 +78,7 @@ export default function CertificateGallery({
         </button>
       )}
 
-      {/* Native dialog */}
-      <dialog
-        ref={dialogRef}
-        onClose={() => setIndex(null)}
-        onClick={(e) => {
-          if (e.target === e.currentTarget) close();
-        }}
-        onKeyDown={(e) => {
-          if (!many) return;
-          if (e.key === "ArrowLeft") step(-1);
-          if (e.key === "ArrowRight") step(1);
-        }}
-        aria-label="Certificate viewer"
-        className="m-auto w-[min(92vw,1100px)] max-w-none bg-transparent p-0 text-text-primary backdrop:bg-black/85"
-      >
-        {current && (
-          <div className="flex flex-col gap-3">
-            <div className="relative h-[78vh] w-full">
-              <Image
-                src={current.src}
-                alt={current.caption}
-                fill
-                sizes="92vw"
-                className="object-contain"
-              />
-            </div>
-
-            <div className="flex items-center justify-between gap-4">
-              <p className="text-sm text-text-muted">
-                {current.caption}
-                <span className="ml-3 font-mono text-xs">
-                  {(index ?? 0) + 1} / {images.length}
-                </span>
-              </p>
-              <div className="flex shrink-0 gap-2">
-                {many && (
-                  <>
-                    <Button variant="mono" type="button" onClick={() => step(-1)}>
-                      Prev
-                    </Button>
-                    <Button variant="mono" type="button" onClick={() => step(1)}>
-                      Next
-                    </Button>
-                  </>
-                )}
-                <Button variant="mono" type="button" onClick={close}>
-                  Close
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
-      </dialog>
+      <Lightbox ref={lightbox} items={images} label="Certificate viewer" />
     </>
   );
 }
