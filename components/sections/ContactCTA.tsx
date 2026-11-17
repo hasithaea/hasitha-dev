@@ -55,7 +55,7 @@ export default function ContactCTA() {
           </a>
 
           <div className="mt-8">
-            <Button variant="link" href="/contact" className="px-0">
+            <Button variant="link" href="/contact">
               Prefer a form?
             </Button>
           </div>
