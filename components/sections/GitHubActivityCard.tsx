@@ -109,11 +109,12 @@ export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
           className="grid grid-flow-col grid-rows-7"
           style={{ gridTemplateColumns: columns, gap: GAP }}
         >
-          {data.days.map((d) => (
+          {data.days.map((d, i) => (
             <i
               key={d.date}
               title={`${d.count} on ${d.date}`}
-              className={`block aspect-square w-full rounded-xs ${levelBg[d.level]}`}
+              style={{ "--c": Math.floor(i / 7) } as React.CSSProperties}
+              className={`cell-in block aspect-square w-full rounded-xs ${levelBg[d.level]}`}
             />
           ))}
         </div>

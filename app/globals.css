@@ -104,6 +104,12 @@ body {
 }
 
 
+/* GitHub activity card heatmap */
+@keyframes cell-in {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: none; }
+}
+
 @layer components {
 .animate-fade-in {
   animation: fade-in 0.7s ease-out both;
@@ -145,6 +151,10 @@ body {
     animation-delay: var(--d, 0ms);
   }
 
+  .cell-in {
+    animation: cell-in 600ms var(--ease-out) both;
+    animation-delay: calc(2000ms + var(--c) * 40ms);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -152,6 +162,9 @@ body {
   .hero-rise,
   .hero-slide,
   .line-mask > span,
+  .cell-in {
+    animation: none;
+  }
   .reveal {
     opacity: 1;
     transform: none;
