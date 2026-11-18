@@ -89,6 +89,21 @@ body {
   to   { opacity: 1; transform: none; }
 }
 
+/* Hero */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes hero-slide {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes line-up {
+  from { transform: translateY(110%); }
+  to   { transform: none; }
+}
+
+
 @layer components {
 .animate-fade-in {
   animation: fade-in 0.7s ease-out both;
@@ -109,8 +124,38 @@ body {
     transform: none;
     filter: none;
   }
+
+  .hero-rise,
+  .hero-slide {
+    animation: hero-rise 1000ms var(--ease-out) both;
+    animation-delay: var(--d, 0ms);
+  }
+  .hero-slide { animation-name: hero-slide; }
+
+  .line-mask {
+    display: inline-block;
+    overflow: hidden;
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+    vertical-align: top;
+  }
+  .line-mask > span {
+    display: inline-block;
+    animation: line-up 1100ms var(--ease-out) both;
+    animation-delay: var(--d, 0ms);
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-fade-in { animation: none; }
+  .animate-fade-in,
+  .hero-rise,
+  .hero-slide,
+  .line-mask > span,
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
 }

@@ -13,11 +13,13 @@ const iconMap = {
   Discord: FaDiscord,
 };
 
+const delay = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
+
 export default async function Hero() {
   const activity = await getGitHubActivity();
 
   return (
-    <section className="relative flex flex-col justify-center pt-28 pb-16 sm:py-24 min-h-dvh">
+    <section className="relative isolate flex flex-col justify-center pt-28 pb-16 sm:py-24 min-h-dvh">
       <div
         className={
           activity
@@ -27,16 +29,27 @@ export default async function Hero() {
       >
         <div>
           <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
-            Hasitha Amarasinghe
+            <span className="line-mask">
+              <span style={delay(0)}>Hasitha</span>
+            </span>{" "}
+            <span className="line-mask">
+              <span style={delay(100)}>Amarasinghe</span>
+            </span>
           </h1>
 
-          <p className="mt-4 max-w-xl text-lg text-text-muted leading-relaxed">
+          <p
+            style={delay(300)}
+            className="hero-rise mt-4 max-w-xl text-lg text-text-muted leading-relaxed"
+          >
             Computer science undergraduate at the University of Ruhuna,
             interested in DevOps, software development, and the systems behind
             shipping reliable software.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div
+            style={delay(450)}
+            className="hero-rise mt-8 flex flex-wrap items-center gap-3"
+          >
             <Button href="#projects">See what I&apos;ve built</Button>
 
             <Link
@@ -47,8 +60,11 @@ export default async function Hero() {
             </Link>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            {socials.map(({ name, href }) => {
+          <div
+            style={delay(740)}
+            className="hero-rise mt-10 flex flex-wrap items-center gap-4"
+          >
+            {socials.map(({ name, href }, i) => {
               const Icon = iconMap[name as keyof typeof iconMap];
               return (
                 <a
@@ -57,7 +73,8 @@ export default async function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={name}
-                  className="group relative p-3 rounded-full border border-border-color bg-bg-surface transition-all duration-300 hover:border-accent hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                  style={{ "--i": i } as React.CSSProperties}
+                  className="touch-hint group relative p-3 rounded-full border border-border-color bg-bg-surface transition-all duration-300 hover:border-accent hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 >
                   <span className="absolute inset-0 rounded-full bg-accent/0 group-hover:bg-accent/20 blur-md transition-all duration-300" />
                   <Icon className="w-5 h-5 relative z-10 text-text-muted group-hover:text-accent transition-colors duration-300" />
@@ -67,7 +84,11 @@ export default async function Hero() {
           </div>
         </div>
 
-        {activity && <GitHubActivityCard data={activity} />}
+        {activity && (
+          <div style={delay(400)} className="hero-slide">
+            <GitHubActivityCard data={activity} />
+          </div>
+        )}
       </div>
     </section>
   );
