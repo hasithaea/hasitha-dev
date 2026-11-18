@@ -81,14 +81,34 @@ body {
   }
 }
 
+/* ---------- Motion ---------- */
+
 /* Contact box animation */
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: none; }
 }
 
+@layer components {
 .animate-fade-in {
   animation: fade-in 0.7s ease-out both;
+  }
+
+  /* Scroll reveal (Reveal.tsx) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+    filter: blur(6px);
+    transition:
+      opacity var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms),
+      transform var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms),
+      filter var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms);
+  }
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
