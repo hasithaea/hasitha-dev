@@ -43,6 +43,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
+      <head>
+        <noscript><style>{`.reveal{opacity:1;transform:none}`}</style></noscript>
+      </head>
+
       <body className="min-h-full flex flex-col">
         <Header />
         {children}
