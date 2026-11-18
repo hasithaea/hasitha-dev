@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/components/Button";
-import { useState, useEffect, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -38,11 +38,6 @@ const inputStyles =
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   async function handleSubmit(e: FormEvent<HTMLElement>) {
     e.preventDefault();
@@ -80,15 +75,11 @@ export default function ContactForm() {
     }
   }
 
-  const fadeClass = mounted
-    ? "opacity-100 translate-y-0"
-    : "opacity-0 translate-y-2";
-
   if (status === "success") {
     return (
       <div className="flex-1 w-full flex items-center justify-center py-20">
         <div
-          className={`max-w-md w-full text-center relative transition-all duration-700 ease-out ${fadeClass}`}
+          className="max-w-md w-full text-center relative animate-fade-in"
         >
           <div className="mx-auto mb-6 h-px w-10 bg-accent/60" />
           <span className="font-mono text-xs tracking-widest text-accent uppercase">
@@ -117,7 +108,7 @@ export default function ContactForm() {
   return (
     <div className="min-h-screen w-full flex items-center justify-center pt-24">
       <div
-        className={`max-w-md w-full relative pb-16 transition-all duration-700 ease-out ${fadeClass}`}
+        className="max-w-md w-full relative pb-16 animate-fade-in"
       >
         <h1 className="text-[34px] sm:text-[38px] leading-[1.1] font-semibold tracking-tight text-text-primary">
           Say hello,
