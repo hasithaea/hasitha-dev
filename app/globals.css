@@ -11,6 +11,11 @@
   --status-good: #32D74B;
   --status-bad: #F87171;
   --slate: #4A5568;
+  /* Animation */
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --dur-fast: 150ms;
+  --dur-base: 300ms;
+  --dur-reveal: 1000ms;
 }
 
 @theme inline {
