@@ -124,8 +124,8 @@ body {
 }
 
 @layer components {
-.animate-fade-in {
-  animation: fade-in 0.7s ease-out both;
+  .animate-fade-in {
+    animation: fade-in 0.7s ease-out both;
   }
 
   /* Scroll reveal (Reveal.tsx) */
