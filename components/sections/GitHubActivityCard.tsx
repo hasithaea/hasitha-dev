@@ -1,5 +1,6 @@
 import type { GitHubActivity, Level } from "@/lib/github-activity";
 import { FaGithub } from "react-icons/fa6";
+import CountUp from "@/components/CountUp";
 
 const CELL = 11;
 const GAP = 3;
@@ -63,8 +64,8 @@ export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
       className="w-full max-w-(--card-w) overflow-hidden rounded-xl border border-border-color bg-bg-surface lg:justify-self-end"
     >
       {/* Header */}
-      <div className="p-5">
-        <div className="flex items-center justify-between gap-3">
+      <div className="flex flex-col gap-4 p-5 sm:flex-row sm:items-start sm:justify-between">
+        <div>
           <a
             href={`https://github.com/${data.login}`}
             target="_blank"
@@ -75,17 +76,19 @@ export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
             github.com/{data.login}
           </a>
           {data.lastPush && (
-            <span className="text-xs text-text-muted">
+            <p className="mt-1.5 text-xs text-text-muted">
               last push · {timeAgo(data.lastPush)} ago
-            </span>
+            </p>
           )}
         </div>
 
-        <p className="mt-4 text-[15px] text-text-primary">
-          <span className="font-semibold tabular-nums">
-            {nf.format(data.total)}
-          </span>{" "}
-          <span className="text-text-muted">contributions in the last year</span>
+        <p className="sm:text-right">
+          <span className="block text-4xl font-bold leading-none tabular-nums text-text-primary">
+            <CountUp value={data.total} />
+          </span>
+          <span className="mt-1.5 block text-xs text-text-muted">
+            contributions in the last year
+          </span>
         </p>
       </div>
 
@@ -142,7 +145,7 @@ export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
             className={`px-4 py-3 ${i > 0 ? "border-l border-border-color" : ""}`}
           >
             <dd className="text-[17px] font-medium leading-tight tabular-nums text-text-primary">
-              {nf.format(value)}
+              <CountUp value={value} />
             </dd>
             <dt className="mt-0.5 text-xs text-text-muted">{label}</dt>
           </div>
