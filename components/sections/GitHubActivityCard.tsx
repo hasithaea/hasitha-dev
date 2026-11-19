@@ -1,5 +1,6 @@
 import type { GitHubActivity, Level } from "@/lib/github-activity";
 import { FaGithub } from "react-icons/fa6";
+import CountUp from "@/components/CountUp";
 
 const CELL = 11;
 const GAP = 3;
@@ -41,8 +42,6 @@ function monthLabels(weeks: Day[][]): string[] {
   return labels;
 }
 
-const nf = new Intl.NumberFormat("en-US");
-
 export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
   const stats = [
     { label: "Commits", value: data.commits },
@@ -63,29 +62,30 @@ export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
       className="w-full max-w-(--card-w) overflow-hidden rounded-xl border border-border-color bg-bg-surface lg:justify-self-end"
     >
       {/* Header */}
-      <div className="p-5">
-        <div className="flex items-center justify-between gap-3">
-          <a
-            href={`https://github.com/${data.login}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[13px] font-medium text-text-primary transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-          >
-            <FaGithub className="h-4 w-4" aria-hidden />
-            github.com/{data.login}
-          </a>
-          {data.lastPush && (
-            <span className="text-xs text-text-muted">
-              last push · {timeAgo(data.lastPush)} ago
-            </span>
-          )}
-        </div>
+      <div className="grid grid-cols-[1fr_auto] items-start gap-x-3 gap-y-4 p-5 sm:gap-y-1.5">
+        <a
+          href={`https://github.com/${data.login}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 justify-self-start text-[13px] font-medium text-text-primary transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:col-start-1 sm:row-start-1"
+        >
+          <FaGithub className="h-4 w-4" aria-hidden />
+          github.com/{data.login}
+        </a>
 
-        <p className="mt-4 text-[15px] text-text-primary">
-          <span className="font-semibold tabular-nums">
-            {nf.format(data.total)}
-          </span>{" "}
-          <span className="text-text-muted">contributions in the last year</span>
+        {data.lastPush && (
+          <p className="whitespace-nowrap text-xs text-text-muted sm:col-start-1 sm:row-start-2">
+            last push · {timeAgo(data.lastPush)} ago
+          </p>
+        )}
+
+        <p className="col-span-2 flex items-baseline gap-2 sm:col-span-1 sm:col-start-2 sm:row-span-2 sm:row-start-1 sm:block sm:text-right">
+          <span className="text-4xl font-bold leading-none tabular-nums text-text-primary sm:block">
+            <CountUp value={data.total} />
+          </span>
+          <span className="text-xs text-text-muted sm:mt-1.5 sm:block">
+            contributions in the last year
+          </span>
         </p>
       </div>
 
@@ -109,11 +109,12 @@ export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
           className="grid grid-flow-col grid-rows-7"
           style={{ gridTemplateColumns: columns, gap: GAP }}
         >
-          {data.days.map((d) => (
+          {data.days.map((d, i) => (
             <i
               key={d.date}
               title={`${d.count} on ${d.date}`}
-              className={`block aspect-square w-full rounded-xs ${levelBg[d.level]}`}
+              style={{ "--c": Math.floor(i / 7) } as React.CSSProperties}
+              className={`cell-in block aspect-square w-full rounded-xs ${levelBg[d.level]}`}
             />
           ))}
         </div>
@@ -141,7 +142,7 @@ export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
             className={`px-4 py-3 ${i > 0 ? "border-l border-border-color" : ""}`}
           >
             <dd className="text-[17px] font-medium leading-tight tabular-nums text-text-primary">
-              {nf.format(value)}
+              <CountUp value={value} />
             </dd>
             <dt className="mt-0.5 text-xs text-text-muted">{label}</dt>
           </div>

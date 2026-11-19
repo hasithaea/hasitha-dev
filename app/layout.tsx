@@ -43,6 +43,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
+      <head>
+        <noscript>
+          <style>{`
+            .reveal{opacity:1;transform:none;filter:none}
+            .count-anim{display:none}
+            .count-final{position:static;width:auto;height:auto;margin:0;overflow:visible;clip-path:none;white-space:normal}
+          `}</style>
+        </noscript>
+      </head>
+
       <body className="min-h-full flex flex-col">
         <Header />
         {children}
