@@ -64,29 +64,28 @@ export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
       className="w-full max-w-(--card-w) overflow-hidden rounded-xl border border-border-color bg-bg-surface lg:justify-self-end"
     >
       {/* Header */}
-      <div className="flex flex-col gap-4 p-5 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <a
-            href={`https://github.com/${data.login}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[13px] font-medium text-text-primary transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-          >
-            <FaGithub className="h-4 w-4" aria-hidden />
-            github.com/{data.login}
-          </a>
-          {data.lastPush && (
-            <p className="mt-1.5 text-xs text-text-muted">
-              last push · {timeAgo(data.lastPush)} ago
-            </p>
-          )}
-        </div>
+      <div className="grid grid-cols-[1fr_auto] items-start gap-x-3 gap-y-4 p-5 sm:gap-y-1.5">
+        <a
+          href={`https://github.com/${data.login}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 justify-self-start text-[13px] font-medium text-text-primary transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:col-start-1 sm:row-start-1"
+        >
+          <FaGithub className="h-4 w-4" aria-hidden />
+          github.com/{data.login}
+        </a>
 
-        <p className="sm:text-right">
-          <span className="block text-4xl font-bold leading-none tabular-nums text-text-primary">
+        {data.lastPush && (
+          <p className="whitespace-nowrap text-xs text-text-muted sm:col-start-1 sm:row-start-2">
+            last push · {timeAgo(data.lastPush)} ago
+          </p>
+        )}
+
+        <p className="col-span-2 flex items-baseline gap-2 sm:col-span-1 sm:col-start-2 sm:row-span-2 sm:row-start-1 sm:block sm:text-right">
+          <span className="text-4xl font-bold leading-none tabular-nums text-text-primary sm:block">
             <CountUp value={data.total} />
           </span>
-          <span className="mt-1.5 block text-xs text-text-muted">
+          <span className="text-xs text-text-muted sm:mt-1.5 sm:block">
             contributions in the last year
           </span>
         </p>
