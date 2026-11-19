@@ -103,6 +103,19 @@ body {
   to   { transform: none; }
 }
 
+/* Social icons */
+@keyframes touch-border {
+  0%, 100% { border-color: var(--border-color); transform: none; }
+  35%      { border-color: var(--accent); transform: translateY(-2px); }
+}
+@keyframes touch-glow {
+  0%, 100% { background-color: rgba(255, 107, 53, 0); }
+  35%      { background-color: rgba(255, 107, 53, 0.2); }
+}
+@keyframes touch-icon {
+  0%, 100% { color: var(--text-muted); }
+  35%      { color: var(--accent); }
+}
 
 /* GitHub activity card heatmap */
 @keyframes cell-in {
@@ -155,6 +168,17 @@ body {
     animation: cell-in 600ms var(--ease-out) both;
     animation-delay: calc(2000ms + var(--c) * 40ms);
   }
+
+  .touch-hint,
+  .touch-hint > span,
+  .touch-hint svg {
+    animation-duration: 700ms;
+    animation-timing-function: ease-out;
+    animation-delay: calc(900ms + var(--i) * 250ms);
+  }
+  .touch-hint        { animation-name: touch-border; }
+  .touch-hint > span { animation-name: touch-glow; }
+  .touch-hint svg    { animation-name: touch-icon; }
 }
 
 @media (prefers-reduced-motion: reduce) {
