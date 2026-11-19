@@ -38,8 +38,8 @@ export default function CountUp({
 
   return (
     <>
-      <span className="sr-only">{nf.format(value)}</span>
-      <span aria-hidden className="relative inline-block">
+      <span className="count-final sr-only">{nf.format(value)}</span>
+      <span aria-hidden className="count-anim relative inline-block">
         <span className="invisible">{nf.format(value)}</span>
         <span className="absolute inset-0">{nf.format(n)}</span>
       </span>
