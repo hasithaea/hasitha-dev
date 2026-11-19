@@ -186,7 +186,10 @@ body {
   .hero-rise,
   .hero-slide,
   .line-mask > span,
-  .cell-in {
+  .cell-in,
+  .touch-hint,
+  .touch-hint > span,
+  .touch-hint svg {
     animation: none;
   }
   .reveal {
