@@ -16,20 +16,26 @@ export default function CountUp({
   const [n, setN] = useState(0);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setN(value);
-      return;
-    }
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
-    const timer = setTimeout(() => {
-      const start = performance.now();
-      const tick = (now: number) => {
-        const t = Math.min(1, (now - start) / duration);
-        setN(Math.round(value * (1 - Math.pow(1 - t, 3))));
-        if (t < 1) raf = requestAnimationFrame(tick);
-      };
-      raf = requestAnimationFrame(tick);
-    }, delay);
+
+    const timer = setTimeout(
+      () => {
+        if (reduced) {
+          setN(value);
+          return;
+        }
+        const start = performance.now();
+        const tick = (now: number) => {
+          const t = Math.min(1, (now - start) / duration);
+          setN(Math.round(value * (1 - Math.pow(1 - t, 2)))); // ease-out quad
+          if (t < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+      },
+      reduced ? 0 : delay,
+    );
+
     return () => {
       clearTimeout(timer);
       cancelAnimationFrame(raf);

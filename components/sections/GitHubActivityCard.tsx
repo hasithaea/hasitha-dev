@@ -42,8 +42,6 @@ function monthLabels(weeks: Day[][]): string[] {
   return labels;
 }
 
-const nf = new Intl.NumberFormat("en-US");
-
 export default function GitHubActivityCard({ data }: { data: GitHubActivity }) {
   const stats = [
     { label: "Commits", value: data.commits },
