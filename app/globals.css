@@ -236,3 +236,7 @@ body {
     transition: none;
   }
 }
+
+@media (forced-colors: active) {
+  .email-touch .email-text { animation: none; }
+}
