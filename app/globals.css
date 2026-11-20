@@ -123,6 +123,34 @@ body {
   to   { opacity: 1; transform: none; }
 }
 
+/* Contact email */
+@keyframes touch-underline {
+  0%, 100% { transform: scaleX(0); }
+  45%, 60% { transform: scaleX(1); }
+}
+@keyframes touch-arrow {
+  0%, 100% { transform: none; color: var(--text-muted); }
+  40%      { transform: translate(10px, -10px); color: var(--accent); }
+}
+@keyframes touch-text {
+  0%, 100% {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(90deg, var(--accent) 50%, var(--text-primary) 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+  }
+  45%, 60% {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(90deg, var(--accent) 50%, var(--text-primary) 50%);
+    background-size: 200% 100%;
+    background-position: 0 0;
+  }
+}
+
 @layer components {
   .animate-fade-in {
     animation: fade-in 0.7s ease-out both;
@@ -176,6 +204,16 @@ body {
   .touch-hint        { animation-name: touch-border; }
   .touch-hint > span { animation-name: touch-glow; }
   .touch-hint svg    { animation-name: touch-icon; }
+
+  .email-touch[data-visible="true"] .email-underline {
+    animation: touch-underline 2000ms ease-in-out 900ms;
+  }
+  .email-touch[data-visible="true"] .email-text {
+    animation: touch-text 2000ms ease-in-out 900ms;
+  }
+  .email-touch[data-visible="true"] .email-arrow {
+    animation: touch-arrow 2000ms ease-in-out 900ms;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -186,7 +224,10 @@ body {
   .cell-in,
   .touch-hint,
   .touch-hint > span,
-  .touch-hint svg {
+  .touch-hint svg,
+  .email-touch .email-underline,
+  .email-touch .email-text,
+  .email-touch .email-arrow {
     animation: none;
   }
   .reveal {
