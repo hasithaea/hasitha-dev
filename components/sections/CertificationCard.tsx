@@ -7,7 +7,7 @@ export default function CertificationCard({
   certification: Certification;
 }) {
   return (
-    <article className="rounded-lg border border-border-color bg-bg-surface p-5">
+    <article className="h-full rounded-lg border border-border-color bg-bg-surface p-5">
       <h4 className="text-base font-semibold tracking-tight">
         {certification.name}
       </h4>
