@@ -7,7 +7,7 @@ export default function CertificationCard({
   certification: Certification;
 }) {
   return (
-    <article className="h-full rounded-lg border border-border-color bg-bg-surface p-5">
+   <article className="relative flex h-full flex-col rounded-lg border border-border-color bg-bg-surface p-5 transition-colors duration-300 hover:border-accent/40">
       <h4 className="text-base font-semibold tracking-tight">
         {certification.name}
       </h4>
@@ -22,9 +22,15 @@ export default function CertificationCard({
         {certification.description}
       </p>
 
-      <Button href="/certifications#featured" variant="accent" className="mt-4">
-        View details
-      </Button>
+      <div className="mt-auto pt-1">
+        <Button 
+          href="/certifications#featured" 
+          variant="accent" 
+          className="mt-4 after:absolute after:inset-0"
+        >
+          View details
+        </Button>
+      </div>
     </article>
   );
 }
