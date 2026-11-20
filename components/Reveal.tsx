@@ -7,6 +7,7 @@ type Props = {
   as?: ElementType;
   delay?: number;
   className?: string;
+  // Skips the default reveal class while still providing data visible
   bare?: boolean;
 };
 
