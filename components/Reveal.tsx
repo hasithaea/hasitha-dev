@@ -7,6 +7,8 @@ type Props = {
   as?: ElementType;
   delay?: number;
   className?: string;
+  // Skips the default reveal class while still providing data visible
+  bare?: boolean;
 };
 
 export default function Reveal({
@@ -14,6 +16,7 @@ export default function Reveal({
   as: Tag = "div",
   delay = 0,
   className = "",
+  bare = false,
 }: Props) {
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
@@ -39,7 +42,7 @@ export default function Reveal({
       ref={ref}
       data-visible={visible}
       style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}
-      className={`reveal ${className}`.trim()}
+      className={`${bare ? "" : "reveal"} ${className}`.trim()}
     >
       {children}
     </Tag>

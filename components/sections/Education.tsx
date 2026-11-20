@@ -8,8 +8,12 @@ export default function Education() {
       <SectionHeading>Education</SectionHeading>
 
       <div className="space-y-10">
-        {education.map((item) => (
-          <EducationItem key={`${item.institution}-${item.qualification}`} item={item} />
+        {education.map((item, i) => (
+          <EducationItem
+            key={`${item.institution}-${item.qualification}`}
+            item={item}
+            index={i}
+          />
         ))}
       </div>
     </section>

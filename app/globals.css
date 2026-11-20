@@ -15,7 +15,7 @@
   --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
   --dur-fast: 150ms;
   --dur-base: 300ms;
-  --dur-reveal: 1000ms;
+  --dur-reveal: 600ms;
 }
 
 @theme inline {
@@ -123,6 +123,34 @@ body {
   to   { opacity: 1; transform: none; }
 }
 
+/* Contact email */
+@keyframes touch-underline {
+  0%, 100% { transform: scaleX(0); }
+  45%, 60% { transform: scaleX(1); }
+}
+@keyframes touch-arrow {
+  0%, 100% { transform: none; color: var(--text-muted); }
+  40%      { transform: translate(10px, -10px); color: var(--accent); }
+}
+@keyframes touch-text {
+  0%, 100% {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(90deg, var(--accent) 50%, var(--text-primary) 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+  }
+  45%, 60% {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(90deg, var(--accent) 50%, var(--text-primary) 50%);
+    background-size: 200% 100%;
+    background-position: 0 0;
+  }
+}
+
 @layer components {
   .animate-fade-in {
     animation: fade-in 0.7s ease-out both;
@@ -131,17 +159,14 @@ body {
   /* Scroll reveal (Reveal.tsx) */
   .reveal {
     opacity: 0;
-    transform: translateY(32px) scale(0.98);
-    filter: blur(6px);
+    transform: translateY(20px) scale(0.98);
     transition:
       opacity var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms),
-      transform var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms),
-      filter var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms);
+      transform var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms);
   }
   .reveal[data-visible="true"] {
     opacity: 1;
     transform: none;
-    filter: none;
   }
 
   .hero-rise,
@@ -179,6 +204,16 @@ body {
   .touch-hint        { animation-name: touch-border; }
   .touch-hint > span { animation-name: touch-glow; }
   .touch-hint svg    { animation-name: touch-icon; }
+
+  .email-touch[data-visible="true"] .email-underline {
+    animation: touch-underline 2000ms ease-in-out 900ms;
+  }
+  .email-touch[data-visible="true"] .email-text {
+    animation: touch-text 2000ms ease-in-out 900ms;
+  }
+  .email-touch[data-visible="true"] .email-arrow {
+    animation: touch-arrow 2000ms ease-in-out 900ms;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -189,13 +224,19 @@ body {
   .cell-in,
   .touch-hint,
   .touch-hint > span,
-  .touch-hint svg {
+  .touch-hint svg,
+  .email-touch .email-underline,
+  .email-touch .email-text,
+  .email-touch .email-arrow {
     animation: none;
   }
   .reveal {
     opacity: 1;
     transform: none;
-    filter: none;
     transition: none;
   }
+}
+
+@media (forced-colors: active) {
+  .email-touch .email-text { animation: none; }
 }

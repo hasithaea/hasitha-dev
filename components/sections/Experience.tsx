@@ -8,8 +8,12 @@ export default function Experience() {
       <SectionHeading>Experience</SectionHeading>
 
       <div className="space-y-6">
-        {experience.map((item) => (
-          <ExperienceItem key={`${item.role}-${item.company}`} item={item} />
+        {experience.map((item, i) => (
+          <ExperienceItem
+            key={`${item.role}-${item.company}`}
+            item={item}
+            index={i}
+          />
         ))}
       </div>
     </section>

@@ -5,7 +5,7 @@ import Button from "@/components/Button";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="relative rounded-lg border border-border-color bg-bg-surface p-5 transition-colors duration-300 hover:border-accent/40">
+    <article className="relative h-full rounded-lg border border-border-color bg-bg-surface p-5 transition-colors duration-300 hover:border-accent/40">
       <h3 className="text-base font-semibold tracking-tight">
         {project.detail ? (
           // The whole card is clickable
