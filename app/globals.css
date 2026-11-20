@@ -15,7 +15,7 @@
   --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
   --dur-fast: 150ms;
   --dur-base: 300ms;
-  --dur-reveal: 1000ms;
+  --dur-reveal: 600ms;
 }
 
 @theme inline {
@@ -131,17 +131,14 @@ body {
   /* Scroll reveal (Reveal.tsx) */
   .reveal {
     opacity: 0;
-    transform: translateY(32px) scale(0.98);
-    filter: blur(6px);
+    transform: translateY(20px) scale(0.98);
     transition:
       opacity var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms),
-      transform var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms),
-      filter var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms);
+      transform var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms);
   }
   .reveal[data-visible="true"] {
     opacity: 1;
     transform: none;
-    filter: none;
   }
 
   .hero-rise,
@@ -195,7 +192,6 @@ body {
   .reveal {
     opacity: 1;
     transform: none;
-    filter: none;
     transition: none;
   }
 }
