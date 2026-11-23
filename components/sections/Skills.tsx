@@ -60,7 +60,6 @@ function AreaGroup({ area, skills }: { area: Area; skills: Skill[] }) {
             key={skill.slug}
             as="li"
             delay={80 + Math.min(i, 5) * 70}
-            className="filter:none"
           >
             <Link
               href={skill.href}

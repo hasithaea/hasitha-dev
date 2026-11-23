@@ -54,7 +54,7 @@ export default async function Hero() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center text-sm font-medium rounded-full px-5 py-2.5 border border-border-color text-text-muted transition-all duration-300 hover:border-accent hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+              className="inline-flex items-center text-sm font-medium rounded-full px-5 py-2.5 border border-border-color text-text-muted transition-colors duration-300 hover:border-accent hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
             >
               Get in touch
             </Link>
@@ -74,9 +74,9 @@ export default async function Hero() {
                   rel="noopener noreferrer"
                   aria-label={name}
                   style={{ "--i": i } as React.CSSProperties}
-                  className="touch-hint group relative p-3 rounded-full border border-border-color bg-bg-surface transition-all duration-300 hover:border-accent hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                  className="touch-hint group relative p-3 rounded-full border border-border-color bg-bg-surface transition-[transform,border-color] duration-300 hover:border-accent hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 >
-                  <span className="absolute inset-0 rounded-full bg-accent/0 group-hover:bg-accent/20 blur-md transition-all duration-300" />
+                  <span className="absolute inset-0 rounded-full bg-accent/0 group-hover:bg-accent/20 blur-md transition-colors duration-300" />
                   <Icon className="w-5 h-5 relative z-10 text-text-muted group-hover:text-accent transition-colors duration-300" />
                 </a>
               );

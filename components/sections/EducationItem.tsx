@@ -84,10 +84,9 @@ export default function EducationItem({
 
               <div className="flex flex-wrap gap-2">
                 {item.coursework.map((course, i) => (
-                  <Reveal 
-                    key={course.name} 
+                  <Reveal
+                    key={course.name}
                     delay={d + 440 + Math.min(i, 8) * 90}
-                    className="filter-none"
                   >
                     {course.repo ? (
                       <a
